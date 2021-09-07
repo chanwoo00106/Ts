@@ -6,4 +6,3 @@ var Teemo = [123, true];
 function func(x) {
     return x * 2;
 }
-console.log(func(12));

@@ -10,5 +10,3 @@ let Teemo:Member = [123, true];
 function func(x: number) : number{
     return x * 2;
 }
-
-console.log(func(12))
