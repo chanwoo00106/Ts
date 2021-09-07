@@ -37,3 +37,7 @@ tsconfig.json 파일에 적는 것들
  }
 }
 ```
+
+type 스크립트가 파일을 교류하는것 같아서 markdown으로 정리합니다
+
+[value](./md/value.md)
