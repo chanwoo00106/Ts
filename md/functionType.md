@@ -45,7 +45,7 @@ function count(x :number | string){
 x라는 파라미터가 뭔지 확실하지 않기 때문에 에러를 줍니다.
 
 ```ts
-function 내함수(x? :number) :number { 
+function func4(x? :number) :number { 
   return x * 2 
 }  
 ```
