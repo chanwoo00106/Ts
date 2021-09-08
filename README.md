@@ -48,3 +48,4 @@ type 스크립트가 서로 파일을 교류하는것 같아서 markdown으로 �
 - [Type Aliases & readonly](./md/TypeAliases&readonly.md)
 - [Literal Types](./md/LiteralTypes.md)
 - [typeAliase](./md/LiteralTypes.md)
+- [TS로 HTML 다루기](./md/TShtml.md)
