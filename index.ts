@@ -1,4 +1,12 @@
-function func(x :number | string){ 
-    return (x as number) + 1 
+let information = {
+    name : 'kim',
+    age : 30,
+    plusOne (x :number) :number{
+      return x + 1
+    },
+    changeName : (say :string):void => {
+      console.log(say);
+    }
 }
-console.log( func('ㅇㄹㄴ') )
+console.log(information.plusOne(1));
+information.changeName('안녕');

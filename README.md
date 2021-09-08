@@ -45,4 +45,6 @@ type 스크립트가 서로 파일을 교류하는것 같아서 markdown으로 �
 - [Function Type](./md/functiontype.md)
 - [type 확정하기](./md/TypeNarrowing.md)
 - [Type Assertion](./md/TypeAssertion.md)
-- [Type Aliases & readonly.md](./md/TypeAliases&readonly.md)
+- [Type Aliases & readonly](./md/TypeAliases&readonly.md)
+- [Literal Types](./md/LiteralTypes.md)
+- [typeAliase](./md/LiteralTypes.md)
