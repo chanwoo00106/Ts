@@ -60,3 +60,26 @@ let teemo :name = {
 teemo.name = 'bad teemo' //readonly라서 에러남
 ```
 
+타입을 합칠 수 있다
+
+```ts
+type Name = string;
+type Age = number;
+type NewOne = Name | Age; 
+```
+
+object에 지정한 타입의 경우 extend 할 수 있다.
+
+```ts
+type PositionX = { x: number };
+type PositionY = { y: number };
+type XandY = PositionX & PositionY
+let XY :XandY = { x : 1, y : 2 }
+```
+
+마지막으로 type을 재정의 할 수는 없다.
+
+```ts
+type Name = string;
+type Name = number; // error
+```
