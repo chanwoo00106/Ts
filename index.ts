@@ -1,1 +1,5 @@
-// 언젠가 작성할 날이 오기를...
+let age: string|number;
+// age + 1; error
+
+let name: unknown = 1;
+// name + 1; error

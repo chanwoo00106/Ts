@@ -48,9 +48,19 @@ name - 1;
 name.data;
 ```
 
-아래와 같이 하면 에러가 난다
+마지막으로 아래와 같이 하면 에러가 난다
 
 ```ts
 let age: string|number;
 age + 1;
+```
+
+typescript는 타입이 정확한 것을 원하기 때문에 타입이 무조건 number가 아닌 이상 연산을 시켜주지 않는다.
+
+또 아래도 같은 이유로 에러가 난다
+
+```ts
+let name: unknown = 1;
+name + 1;
+
 ```

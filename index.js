@@ -1,1 +1,4 @@
-// 언젠가 작성할 날이 오기를...
+var age;
+// age + 1; error
+var name = 1;
+// name + 1; error
