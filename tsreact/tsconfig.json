@@ -18,7 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noImplicitAny": false // any타입으로 보이면 에러
   },
   "include": [
     "src"

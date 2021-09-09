@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.dataFild {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 1%;
+}
+
+.card {
+  width: 30%;
+  height: 20%;
+  border: 1px solid #282c34;
+}
