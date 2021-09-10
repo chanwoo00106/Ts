@@ -41,12 +41,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  justify-content: center;
+  margin: 0 auto;
   margin-top: 1%;
+  width: 80%;
 }
 
 .card {
-  width: 30%;
+  width: 23%;
   height: 20%;
   border: 1px solid #282c34;
 }
