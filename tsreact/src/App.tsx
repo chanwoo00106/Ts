@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-function Index() {
-  return <h2>Home</h2>;
-}
-function Product({ match }) {
-  return <h2>This is a page for product with ID: {match.params.id} </h2>;
-}
+import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function AppRouter() {
+  const [id, setId] = useState(0);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const num: number = Number(e.target.value);
+    setId(num);
+  }
+
   return (
     <Router>
       <div>
@@ -18,16 +20,13 @@ function AppRouter() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/products/1">First Product</Link>
-            </li>
-            <li>
-              <Link to="/products/2">Second Product</Link>
+              <Link to={`/products/${id}`}>Go!</Link>
             </li>
           </ul>
         </nav>
-
-        <Route path="/" exact component={Index} />
-        <Route path="/products/:id" component={Product} />
+        <input type="number" onChange={onChange} />
+        <Route path="/" exact component={Profile} />
+        <Route path="/products/:id" component={Home} />
       </div>
     </Router>
   );
