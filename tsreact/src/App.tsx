@@ -1,35 +1,41 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
+import List from './components/List'
+import './App.css';
 
-function AppRouter() {
-  const [id, setId] = useState(0);
+interface IState {
+  people: {
+    name: string;
+    url: string;
+    age: number;
+    note?: string;
+  }[]
+}
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const num: number = Number(e.target.value);
-    setId(num);
-  }
+function App() {
+  const [people, setPeople] = useState<IState['people']>([{
+    name: 'teemo',
+    url: '',
+    age: 10,
+    note: 'very cute'
+  },
+  {
+    name: 'chan',
+    url: '',
+    age: 17
+  },
+  {
+    name: 'Hyungwoo',
+    url: '',
+    age: 17,
+    note: 'studying JS'
+  }]);
 
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to={`/products/${id}`}>Go!</Link>
-            </li>
-          </ul>
-        </nav>
-        <input type="number" onChange={onChange} />
-        <Route path="/" exact component={Profile} />
-        <Route path="/products/:id" component={Home} />
-      </div>
-    </Router>
+    <div className="App">
+      <h1>People!</h1>
+      <List people={people} />
+    </div>
   );
 }
 
-export default AppRouter;
+export default App;
