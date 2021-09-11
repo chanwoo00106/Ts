@@ -1,4 +1,4 @@
-import { ActionType } from '../action/index';
+import { ActionType } from '../action-types/index';
 
 interface DepositAction {
     type: ActionType.DEPOSIT,
