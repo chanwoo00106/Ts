@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import List from './components/List'
+import AddToList from "./components/AddToList";
 import './App.css';
 
-interface IState {
+export interface IState {
   people: {
     name: string;
     url: string;
@@ -25,15 +26,16 @@ function App() {
   },
   {
     name: 'Hyungwoo',
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png',
+    url: 'https://vueschool.io/articles/wp-content/uploads/2017/12/why-js.png',
     age: 17,
-    note: 'studying JS'
+    note: 'I love JS and swift is trash'
   }]);
 
   return (
     <div className="App">
       <h1>People!</h1>
       <List people={people} />
+      <AddToList people={people} setPeople={setPeople} />
     </div>
   );
 }
