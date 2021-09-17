@@ -1,0 +1,1 @@
+const arrSN: (number | string)[] = ['Teemo', 123, 'hello', 3.141592653589793238];
