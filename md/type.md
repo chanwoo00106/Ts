@@ -270,3 +270,52 @@ let v3: any = u; // OK!
 let v4: number = u as number; // 타입을 단언하면 할당할 수 있습니다.
 ```
 
+> <b style="font-size: 2rem">Object</b><br>
+> 기본적으로 typeof 연산자가 "object"로 반환하는 모든 타입을 나타냅니다.
+
+
+```ts
+let obj: object = {};
+let arr: object = [];
+let func: object = function () {};
+let nullValue: object = null;
+let date: object = new Date();
+```
+
+> 여러 타입의 상위 타입이기 때문에 그다지 유용하지 않습니다.<br>
+> 보다 정확하게 타입 지정을 하기 위해 다음과 같이 객체 속성(Properties)들에 대한<br>
+> 타입을 개별적으로 지정할 수 있습니다.
+
+```ts
+let userA: { name: string, age: number, email: string } = {
+  name: 'Hyung woo',
+  age: 123,
+  email: 'ilovejs@js.com'
+};
+
+let userB: { name: string, age: number } = { // Error ts(2739)
+  name: 'anything',
+  age: false, // Error
+};
+```
+
+> 반복적인 사용을 원하는 경우, interface나 type을 사용하는 것을 추천합니다.
+
+```ts
+interface IUser {
+    name: string,
+    age: number,
+    email: string
+}
+
+let userA: IUser = {
+  name: 'Hyung woo',
+  age: 123,
+  email: 'ilovejs@js.com'
+};
+
+let userB: IUser = { // Error ts(2739)
+  name: 'anything',
+  age: false, // Error
+};
+```
