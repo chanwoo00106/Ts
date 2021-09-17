@@ -178,4 +178,5 @@ console.log(tuple); // ['b', 2, 3];
 tuple.push(true); //error TS2345
 ```
 
-마찬가지로 `readonly`로 선언할 수 있다.
+> 마찬가지로 `readonly`로 선언할 수 있다.
+
