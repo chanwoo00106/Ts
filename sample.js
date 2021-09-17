@@ -1,2 +1,9 @@
 "use strict";
-var arrSN = ['Teemo', 123, 'hello', 3.141592653589793238];
+var Color;
+(function (Color) {
+    Color["Red"] = "red";
+    Color["Green"] = "green";
+    Color["Blue"] = "blue";
+})(Color || (Color = {}));
+console.log(Color.Red); // red
+console.log(Color['Red']); // Red

@@ -180,3 +180,55 @@ tuple.push(true); //error TS2345
 
 > 마찬가지로 `readonly`로 선언할 수 있다.
 
+> <b style="font-size: 2rem">Enum</b><br>
+> Enum은 숫자 혹은 문자열 값 집합에 이름(Member)을 부여할 수 있는 타입으로,<br>
+> 값의 종류가 일정한 범위로 정해져 있는 경우 유용합니다.
+>
+> 기본적으로 0부터 시작하며 값은 1씩 증가하고<br>
+> 역방향 매핑이 가능합니다.
+
+```ts
+enum Week {
+    Sun, // 0
+    Mon, // 1
+    Tue, // 2
+    Wed, // 3
+    Thu, // 4
+    Fri, // 5
+    Sat // 6
+}
+
+console.log(Week.Tue); // 2
+console.log(Week[2]); // Tue
+```
+
+> 수동으로 값을 변경할 수 있으며, 값을 변경한 부분부터 다시 1씩 증가합니다.
+
+```ts
+enum Week {
+    Sun, // 0
+    Mon = 12, // 12
+    Tue, // 13
+    Wed, // 14
+    Thu, // 15
+    Fri, // 16
+    Sat // 17
+}
+
+console.log(Week.Tue); // 13
+console.log(Week[13]); // Tue
+```
+
+> 추가로, Enum은 숫자 값 열거뿐만아니라<br>
+> 다음과 같이 문자열 값으로 초기화할 수 있습니다.<br>
+> 하지만 개별적으로 초기화를 해야해서 굉장히 귀찮습니다.
+
+```ts
+enum Color {
+    Red = 'red',
+    Green = 'green',
+    Blue = 'blue'
+}
+console.log(Color.Red); // red
+console.log(Color['red']) // Red
+```
