@@ -40,14 +40,14 @@ TS2322라는 에러 코드를 볼 수 있는데 이걸 구글에 검색을 하�
 
 # 여러 타입들
 
-> <b style="font-size: 1.5rem">Boolean</b><br>
+> <b style="font-size: 2rem">Boolean</b><br>
 > 단순한 참(true)/거짓(false) 값을 나타냅니다.
 ```ts
 const bool: booleanT = true;
 const bool: booleanF = false;
 ```
 
-> <b style="font-size: 1.5rem">Number</b><br>
+> <b style="font-size: 2rem">Number</b><br>
 > 모든 부동 소수점 값을 사용할 수 있습니다.<br>
 > ES6에 도입된 2진수 및 8진수 리터럴도 지원합니다.
 
@@ -62,7 +62,7 @@ let infinity: number = Infinity;
 let nan: number = NaN;
 ```
 
-> <b style="font-size: 1.5rem">String</b><br>
+> <b style="font-size: 2rem">String</b><br>
 > 작은따옴표('), 큰따옴표(") 뿐만 아니라 ES6의 템플릿 문자열도 지원합니다.
 
 ```ts
@@ -71,7 +71,7 @@ const string2: string = 'hello Teemo';
 const string3: string = "this is string";
 ```
 
-> <b style="font-size: 1.5rem">Array</b><br>
+> <b style="font-size: 2rem">Array</b><br>
 > 순차적으로 값을 가지는 일반 배열을 나타냅니다.<br>
 > 배열은 다음과 같이 두 가지 방법으로 타입을 선언할 수 있습니다.
 
@@ -89,13 +89,13 @@ const arrN: number[] = [ 1, 2, 3, 4, 5, 6 ];
 const arrSN: (number | string)[] = ['Teemo', 123, 'hello', 3.141592653589793238];
 ```
 
-배열이 가지는 항목의 값을 단언할 수 없다면 any를 사용할 수 있습니다.
+> 배열이 가지는 항목의 값을 단언할 수 없다면 any를 사용할 수 있습니다.
 
 ```ts
 const arrAny: any[] = [1, 'Teemo', false, {}, []];
 ```
 
-인터페이스(Interface)나 커스텀 타입(Type)을 사용할 수도 있습니다.
+> 인터페이스(Interface)나 커스텀 타입(Type)을 사용할 수도 있습니다.
 
 ```ts
 interface IUser {
@@ -121,3 +121,61 @@ let userArr: IUser[] = [
   }
 ];
 ```
+
+> 유용하진 않지만, 다음과 같이 특정한 값으로 타입을 대신해 작성할 수도 있습니다.
+
+```ts
+let array = 10[];
+array = [10];
+array.push(10);
+array.push(11); // Error - TS2345
+```
+
+> readonly 키워드나 ReadonlyArray 타입을 사용하면<br>
+> 읽기 전용 배열을 생성할 수도 있습니다.
+
+> <b style="font-size: 2rem">Tuple</b><br>
+> Tuple 타입은 배열과 매우 유사합니다.<br>
+> 차이점이라면 정해진 타입의 고정된 길이(length) 배열을 표현합니다.
+
+```ts
+let tuple: [string, number];
+tuple = ['a', 1];
+tuple = ['a', 1, 2]; // Error - TS2322
+tuple = [1, 'a']; // Error - TS2322
+```
+
+> 다음과 같이 데이터를 개별 변수로 지정하지 않고,<br>
+> 단일 Tuple 타입으로 지정해 사용할 수 있습니다.
+
+```ts
+const name: string = "Teemo";
+const age: number = 10;
+const vote: boolean = false;
+
+const user = [string, number, boolean] = ["Teemo", 10, false];
+user[0] // Teemo
+user[1] // 10
+user[2] // false
+```
+
+>  위 방식을 활용해 다음과 같은 Tuple 타입의 배열(2차원 배열)을 사용할 수 있습니다.
+
+```ts
+let users: [number, string, boolean][];
+users = [[1, 'Teemo', true], [2, 'Hyungwoo who likes js', false], [3, 'chan', true]];
+```
+
+> Tuple은 `정해진 타입의 고정된 길이 배열`을 표현한다.<br>
+> 그러므로 .push()나 .splice() 등을 통해 값을 넣는 행위는 막을 수 없습니다.
+
+```ts
+let tuple: [string, number];
+tuple = ['a', 1];
+tuple = ['b', 2];
+tuple.push(3);
+console.log(tuple); // ['b', 2, 3];
+tuple.push(true); //error TS2345
+```
+
+마찬가지로 `readonly`로 선언할 수 있다.
