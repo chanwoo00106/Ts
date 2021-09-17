@@ -232,3 +232,41 @@ enum Color {
 console.log(Color.Red); // red
 console.log(Color['red']) // Red
 ```
+
+> <b style="font-size: 2rem">Any</b><br>
+> Any는 모든 타입을 의미합니다.<br>
+> 따라서 일반적인 자바스크립트 변수와 동일하게 어떤 타입의 값도 할당할 수 있습니다.<br>
+> 외부 자원을 활용해 개발할 때 `불가피`하게 타입을 단언할 수 없는 경우, 유용할 수 있습니다.
+
+```ts
+let any: any = 123;
+any = 'Hello world';
+any = {};
+any = null;
+```
+
+다양한 값을 포함하는 배열을 나타낼 때 사용할 수도 있습니다.
+
+```ts
+const list: any[] = [1, true, 'Anything!'];
+```
+
+> <b style="font-size: 2rem">Unknown</b><br>
+> Any와 같이 최상위 타입인 Unknown은 알 수 없는 타입을 의미합니다.<br>
+> Any와 같이 Unknown에는 어떤 타입의 값도 할당할 수 있지만,<br>
+> Unknown을 다른 타입에는 할당할 수 없습니다.
+>
+> 다양한 타입을 반환할 수 있는 API에서 유용할 수 있습니다.
+>
+> `Unknown 보단 좀 더 명확한 타입을 사용하는 것이 좋습니다.`
+
+```ts
+let a: any = 123;
+let u: unknown = 123;
+
+let v1: boolean = a; // 모든 타입(any)은 어디든 할당할 수 있습니다.
+let v2: number = u; // 알 수 없는 타입(unknown)은 모든 타입(any)을 제외한 다른 타입에 할당할 수 없습니다. ts(2322)
+let v3: any = u; // OK!
+let v4: number = u as number; // 타입을 단언하면 할당할 수 있습니다.
+```
+
