@@ -1,6 +1,13 @@
 # Typescript를 배우는 곳
 
+아래와 같이 터미널에 명령어를 치면 `tsconfig.json` 파일이 자동으로 생성된다.
+
+```
+tsc --init
+```
+
 아래 명령어를 터미널에 치면 알아서 js파일로 변환됨
+
 ```
 tsc -w
 ```
@@ -38,15 +45,6 @@ tsconfig.json 파일에 적는 것들
 }
 ```
 
-type 스크립트가 서로 파일을 교류하는것 같아서 markdown으로 정리합니다
+전부 잊어서 다시 시작!!
 
-- [value](./md/value.md)
-- [UnionType](./md/UnionType.md)
-- [Function Type](./md/functiontype.md)
-- [type 확정하기](./md/TypeNarrowing.md)
-- [Type Assertion](./md/TypeAssertion.md)
-- [Type Aliases & readonly](./md/TypeAliases&readonly.md)
-- [Literal Types](./md/LiteralTypes.md)
-- [typeAliase](./md/LiteralTypes.md)
-- [TS로 HTML 다루기](./md/TShtml.md)
-- [interface](./md/interface.md)
+- [타입 지정](md/type.md)
