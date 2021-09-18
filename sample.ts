@@ -1,21 +1,10 @@
-const func = (a: number, b: number): number => a + b;
-
-function funcT(a: number, b: number): number {
-    return a + b;
+function someFunc(val: string | number, isNumber: boolean) {
+    // some logics
+    if (isNumber) {
+        // 1. 변수 as 타입
+        (val as number).toFixed(2);
+        // Or
+        // 2. <타입>변수
+        // (<number>val).toFixed(2);
+    }
 }
-
-console.log(func(1, 2));
-console.log(funcT(1, 2));
-
-//===================================
-
-const funcP = (): void => {
-    console.log('Teemo!');
-};
-
-function funcPT(): void {
-    console.log('Teemo!');
-}
-
-funcP();
-funcPT();

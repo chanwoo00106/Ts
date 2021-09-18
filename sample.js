@@ -1,16 +1,11 @@
 "use strict";
-var func = function (a, b) { return a + b; };
-function funcT(a, b) {
-    return a + b;
+function someFunc(val, isNumber) {
+    // some logics
+    if (isNumber) {
+        // 1. 변수 as 타입
+        val.toFixed(2);
+        // Or
+        // 2. <타입>변수
+        // (<number>val).toFixed(2);
+    }
 }
-console.log(func(1, 2));
-console.log(funcT(1, 2));
-//===================================
-var funcP = function () {
-    console.log('Teemo!');
-};
-function funcPT() {
-    console.log('Teemo!');
-}
-funcP();
-funcPT();

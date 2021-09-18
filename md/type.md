@@ -434,3 +434,37 @@ num = 'chan!'; // TS2322
 - 기본값이 설정된 매개 변수
 - 반환 값이 있는 함수
 
+> <b style="font-size: 2rem">타입 단언(Assertions)</b><br>
+
+> 타입스크립트가 타입 추론을 통해 판단할 수 있는 타입의 범주를 넘는 경우,<br>
+> 더이상 추론하지 않도록 지시할 수 있습니다.
+>
+> 설명을 하자면 `val`는 string또는 number가 될 수 있고<br>
+> `isNumber`는 boolean타입이며 isNumber가 true일 경우 val은 숫자일 것이고,<br>
+> 이에 toFixed를 사용할 수 있음을 확실히 알 수 있습니다.
+>
+> 하지만 타입스크립트는 ‘isNumber’라는 이름만으로 위 내용을 추론할 수 없기 때문에 “val이 문자열인 경우 toFixed를 사용할 수 없다”고 (컴파일 단계에서) 다음과 같은 에러를 반환합니다.
+
+```ts
+function someFunc(val: string | number, isNumber: boolean) {
+  // some logics
+  if (isNumber) {
+    val.toFixed(2); // Error - TS2339: ... Property 'toFixed' does not exist on type 'string'.
+  }
+}
+```
+
+> 따라서 `isNumber`가 true일 때 `val`이 숫자임을 다음과 같이 2가지 방식으로 단언할 수 있습니다.<br>
+
+```ts
+function someFunc(val: string | number, isNumber: boolean) {
+  // some logics
+  if (isNumber) {
+    // 1. 변수 as 타입
+    (val as number).toFixed(2);
+    // Or
+    // 2. <타입>변수
+    // (<number>val).toFixed(2);
+  }
+}
+```
