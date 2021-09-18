@@ -368,4 +368,28 @@ function sayHello(msg: string): undefined {
 }
 ```
 
+> <b style="font-size: 2rem">Naver</b><br>
+> Never은 절대 발생하지 않을 값을 나타내며, 어떠한 타입도 적용할 수 없습니다.
+
+```ts
+function error(message: string): never {
+  throw new Error(message);
+}
+```
+
+> 보통 다음과 같이 빈 배열을 타입으로 잘못 선언한 경우 볼 수 있습니다.
+
+```ts
+const never: [] = [];
+never.push(3); // Error - TS2345
+```
+
+> <b style="font-size: 2rem">유니언(Union)</b><br>
+> 2개 이상의 타입을 허용하는 경우, 이를 유니언 이라고 합니다.<br>
+> `|`를 사용해 타입을 구분하며, `()`는 선택 사항입니다.
+
+```ts
+const a: (string | number) = 123;
+a = 'hello';
+```
 
