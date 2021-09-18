@@ -48,3 +48,4 @@ tsconfig.json 파일에 적는 것들
 전부 잊어서 다시 시작!!
 
 - [타입 지정](md/type.md)
+- [함수](md/func.md)
