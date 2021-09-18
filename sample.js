@@ -1,8 +1,7 @@
 "use strict";
-var num = undefined;
-var str = null;
-var obj = undefined;
-var arr = null;
-var und = null;
-var nul = undefined;
-var voi = null;
+;
+var chanwoo = {
+    name: 'chan',
+    age: 17,
+    gen: 'men'
+};

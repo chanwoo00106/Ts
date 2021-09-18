@@ -393,3 +393,25 @@ const a: (string | number) = 123;
 a = 'hello';
 ```
 
+> <b style="font-size: 2rem">인터섹션(Intersection)</b><br>
+> `&`(ampersand)를 사용해 2개 이상의 타입을 조합하는 경우,<br>
+> 이를 인터섹션(Intersection)이라고 합니다.<br>
+> 인터섹션은 새로운 타입을 생성하지 않고 기존의 타입들을 조합할 수 있기 때문에<br>
+> 유용하지만, 자주 사용되는 방법은 아닙니다.
+
+```ts
+interface user {
+  name: string,
+  age: number
+};
+
+interface gender {
+  gen: string
+}
+
+const chanwoo: user & gender =  {
+  name: 'chan',
+  age: 17,
+  gen: 'men'
+}
+```
