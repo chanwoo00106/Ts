@@ -1,6 +1,6 @@
 "use strict";
 function someFunc(val, isNumber) {
-    if (isNumber) {
+    if (typeof val === 'number') {
         val.toFixed(2);
         isNaN(val);
     }

@@ -1,10 +1,10 @@
 function someFunc(val: string | number, isNumber: boolean) {
-    if (isNumber) {
-        (val as number).toFixed(2);
-        isNaN(val as number);
+    if (typeof val === 'number') {
+        val.toFixed(2);
+        isNaN(val);
     } else {
-        (val as string).split('');
-        (val as string).toUpperCase();
-        (val as string).length;
+        val.split('');
+        val.toUpperCase();
+        val.length;
     }
 }

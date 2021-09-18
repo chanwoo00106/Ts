@@ -572,6 +572,21 @@ function someFunc(val: string | number, isNumber: boolean) {
 }
 ```
 
+> 이럴 때는 `typeof`와 `if`를 사용해 주면 된다
+
+```ts
+function someFunc(val: string | number, isNumber: boolean) {
+  if (typeof val === number) {
+    number.toFixed(2);
+    isNaN(number);
+  } else {
+    val.split('');
+    val.toUpperCase();
+    val.length;
+  }
+}
+```
+
 # 인터페이스(interface)
 
 > 인터페이스(Interface)는 타입스크립트 여러 객체를 정의하는 일종의 규칙이며 구조입니다.<br>
