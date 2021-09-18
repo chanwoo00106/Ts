@@ -38,16 +38,14 @@ console.log(add(1, 2)); // 3
 
 TS2322라는 에러 코드를 볼 수 있는데 이걸 구글에 검색을 하면 쉽게 에러 코드에 대한 정보를 알 수 있다.
 
-# 여러 타입들
-
-> <b style="font-size: 2rem">Boolean</b><br>
+# Boolean
 > 단순한 참(true)/거짓(false) 값을 나타냅니다.
 ```ts
 const bool: booleanT = true;
 const bool: booleanF = false;
 ```
 
-> <b style="font-size: 2rem">Number</b><br>
+# Number
 > 모든 부동 소수점 값을 사용할 수 있습니다.<br>
 > ES6에 도입된 2진수 및 8진수 리터럴도 지원합니다.
 
@@ -62,7 +60,7 @@ let infinity: number = Infinity;
 let nan: number = NaN;
 ```
 
-> <b style="font-size: 2rem">String</b><br>
+# String
 > 작은따옴표('), 큰따옴표(") 뿐만 아니라 ES6의 템플릿 문자열도 지원합니다.
 
 ```ts
@@ -71,7 +69,7 @@ const string2: string = 'hello Teemo';
 const string3: string = "this is string";
 ```
 
-> <b style="font-size: 2rem">Array</b><br>
+# Array
 > 순차적으로 값을 가지는 일반 배열을 나타냅니다.<br>
 > 배열은 다음과 같이 두 가지 방법으로 타입을 선언할 수 있습니다.
 
@@ -134,7 +132,7 @@ array.push(11); // Error - TS2345
 > readonly 키워드나 ReadonlyArray 타입을 사용하면<br>
 > 읽기 전용 배열을 생성할 수도 있습니다.
 
-> <b style="font-size: 2rem">Tuple</b><br>
+# Tuple
 > Tuple 타입은 배열과 매우 유사합니다.<br>
 > 차이점이라면 정해진 타입의 고정된 길이(length) 배열을 표현합니다.
 
@@ -180,7 +178,7 @@ tuple.push(true); //error TS2345
 
 > 마찬가지로 `readonly`로 선언할 수 있다.
 
-> <b style="font-size: 2rem">Enum</b><br>
+# Enum
 > Enum은 숫자 혹은 문자열 값 집합에 이름(Member)을 부여할 수 있는 타입으로,<br>
 > 값의 종류가 일정한 범위로 정해져 있는 경우 유용합니다.
 >
@@ -233,7 +231,7 @@ console.log(Color.Red); // red
 console.log(Color['red']) // Red
 ```
 
-> <b style="font-size: 2rem">Any</b><br>
+# Any
 > Any는 모든 타입을 의미합니다.<br>
 > 따라서 일반적인 자바스크립트 변수와 동일하게 어떤 타입의 값도 할당할 수 있습니다.<br>
 > 외부 자원을 활용해 개발할 때 `불가피`하게 타입을 단언할 수 없는 경우, 유용할 수 있습니다.
@@ -251,7 +249,7 @@ any = null;
 const list: any[] = [1, true, 'Anything!'];
 ```
 
-> <b style="font-size: 2rem">Unknown</b><br>
+# Unknown
 > Any와 같이 최상위 타입인 Unknown은 알 수 없는 타입을 의미합니다.<br>
 > Any와 같이 Unknown에는 어떤 타입의 값도 할당할 수 있지만,<br>
 > Unknown을 다른 타입에는 할당할 수 없습니다.
@@ -270,7 +268,7 @@ let v3: any = u; // OK!
 let v4: number = u as number; // 타입을 단언하면 할당할 수 있습니다.
 ```
 
-> <b style="font-size: 2rem">Object</b><br>
+# Object
 > 기본적으로 typeof 연산자가 "object"로 반환하는 모든 타입을 나타냅니다.
 
 
@@ -320,7 +318,7 @@ let userB: IUser = { // Error ts(2739)
 };
 ```
 
-> <b style="font-size: 2rem">Null과 Undefined</b><br>
+# Null과 Undefined
 > 기본적으로 Null과 Undefined는 모든 타입의 하위 타입으로,<br>
 > 다음과 같이 각 타입에 할당할 수 있습니다.<br>
 > 심지어 서로의 타입에도 할당 가능합니다.
@@ -340,7 +338,7 @@ const arr: string[] = [null, undefined];
 let voi: void = undefined; // ok
 ```
 
-> <b style="font-size: 2rem">Void</b><br>
+# Void
 > Void는 일반적으로 값을 반환하지 않는 함수에서 사용합니다.<br>
 > : void 위치는 함수가 반환 타입을 명시하는 곳입니다.
 
@@ -368,7 +366,7 @@ function sayHello(msg: string): undefined {
 }
 ```
 
-> <b style="font-size: 2rem">Naver</b><br>
+# Naver
 > Never은 절대 발생하지 않을 값을 나타내며, 어떠한 타입도 적용할 수 없습니다.
 
 ```ts
@@ -384,7 +382,7 @@ const never: [] = [];
 never.push(3); // Error - TS2345
 ```
 
-> <b style="font-size: 2rem">유니언(Union)</b><br>
+# Union
 > 2개 이상의 타입을 허용하는 경우, 이를 유니언 이라고 합니다.<br>
 > `|`를 사용해 타입을 구분하며, `()`는 선택 사항입니다.
 
@@ -393,7 +391,7 @@ const a: (string | number) = 123;
 a = 'hello';
 ```
 
-> <b style="font-size: 2rem">인터섹션(Intersection)</b><br>
+# Intersection
 > `&`(ampersand)를 사용해 2개 이상의 타입을 조합하는 경우,<br>
 > 이를 인터섹션(Intersection)이라고 합니다.<br>
 > 인터섹션은 새로운 타입을 생성하지 않고 기존의 타입들을 조합할 수 있기 때문에<br>
@@ -416,7 +414,38 @@ const chanwoo: user & gender =  {
 }
 ```
 
-> <b style="font-size: 2rem">타입 추론(Inference)</b><br>
+# function
+
+> 화살표 함수를 이용해 타입을 지정할 수 있습니다.<br>
+> 인수의 타입과 반환 값의 타입을 입력합니다.
+
+```ts
+// 인수 2개를 받고 반환값이 숫자인 경우
+const func = (a: number, b: number): number => a + b;
+
+function funcT(a: number, b: number): number {
+    return a + b;
+}
+
+console.log(func(1, 2));
+console.log(funcT(1, 2));
+
+//===================================
+
+// 반환값이 없을 경우
+const funcP = (): void => {
+    console.log('Teemo!');
+};
+
+function funcPT(): void {
+    console.log('Teemo!');
+}
+
+funcP();
+funcPT();
+```
+
+# Inference
 > 명시적으로 타입 선언이 되어있지 않은 경우,<br>
 > 타입스크립트는 타입을 추론해 제공합니다.
 
@@ -434,7 +463,7 @@ num = 'chan!'; // TS2322
 - 기본값이 설정된 매개 변수
 - 반환 값이 있는 함수
 
-> <b style="font-size: 2rem">타입 단언(Assertions)</b><br>
+# Assertions
 
 > 타입스크립트가 타입 추론을 통해 판단할 수 있는 타입의 범주를 넘는 경우,<br>
 > 더이상 추론하지 않도록 지시할 수 있습니다.
@@ -469,7 +498,7 @@ function someFunc(val: string | number, isNumber: boolean) {
 }
 ```
 
-> <b style="font-size: 2rem">Non-null 단언 연산자</b><br>
+# Non-null 단언 연산자
 > 피연산자가 Nullish(null이나 undefined) 값이 아님을 단언할 수 있는데,<br>
 > 변수나 속성에서 간단하게 사용할 수 있기 때문에 유용합니다.
 
