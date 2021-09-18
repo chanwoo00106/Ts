@@ -472,7 +472,8 @@ num = 'chan!'; // TS2322
 > `isNumber`는 boolean타입이며 isNumber가 true일 경우 val은 숫자일 것이고,<br>
 > 이에 toFixed를 사용할 수 있음을 확실히 알 수 있습니다.
 >
-> 하지만 타입스크립트는 ‘isNumber’라는 이름만으로 위 내용을 추론할 수 없기 때문에 “val이 문자열인 경우 toFixed를 사용할 수 없다”고 (컴파일 단계에서) 다음과 같은 에러를 반환합니다.
+> 하지만 타입스크립트는 ‘isNumber’라는 이름만으로 위 내용을 추론할 수 없기 때문에<br>
+> “val이 문자열인 경우 toFixed를 사용할 수 없다”고 (컴파일 단계에서) 다음과 같은 에러를 반환합니다.
 
 ```ts
 function someFunc(val: string | number, isNumber: boolean) {
@@ -552,4 +553,75 @@ document.querySelector('.menu-item').innerHTML;
 
 // Non-null assertion operator
 document.querySelector('.menu-item')!.innerHTML;
+```
+
+# 타입 가드(Guards)
+
+> val의 타입을 매번 보장하기 위해 타입 단언을 여러 번 사용하게 되는 경우가 있습니다.
+
+```ts
+function someFunc(val: string | number, isNumber: boolean) {
+  if (isNumber) {
+    (val as number).toFixed(2);
+    isNaN(val as number);
+  } else {
+    (val as string).split('');
+    (val as string).toUpperCase();
+    (val as string).length;
+  }
+}
+```
+
+# 인터페이스(interface)
+
+> 인터페이스(Interface)는 타입스크립트 여러 객체를 정의하는 일종의 규칙이며 구조입니다.<br>
+> 다음과 같이 interface 키워드와 함께 사용합니다.
+
+```ts
+interface IUser {
+  name: string,
+  age: number,
+  isValid: boolean
+}
+
+const user1: IUser = {
+  name: 'chan',
+  age: 17,
+  isValid: false
+}
+```
+
+> `:`(colon), `,`(comma) 혹은 기호를 사용하지 않을 수 있습니다.
+
+```ts
+interface IUser {
+  name: string,
+  age: number
+}
+// Or
+interface IUser {
+  name: string;
+  age: number;
+}
+// Or
+interface IUser {
+  name: string
+  age: number
+}
+```
+
+> 다음과 같이 속성에 ?를 사용하면 선택적 속성으로 정의할 수 있습니다.
+
+```ts
+interface IUser {
+  name: string,
+  age: number,
+  isAdult?: boolean // Optional property
+}
+
+// `isAdult`를 초기화하지 않아도 에러가 발생하지 않습니다.
+let user: IUser = {
+  name: 'Neo',
+  age: 123
+};
 ```

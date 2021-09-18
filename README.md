@@ -67,4 +67,4 @@ tsconfig.json 파일에 적는 것들
 - [Inference](type.md#Inference)
 - [Assertions](type.md#Assertions)
 - [Non-null 단언 연산자](type.md#Non-null-단언-연산자)
-- [String](type.md#)
+- [타입 가드(Guards)](type.md#타입-가드(Guards))

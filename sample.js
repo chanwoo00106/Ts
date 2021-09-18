@@ -1,5 +1,12 @@
 "use strict";
-function fnE(x) {
-    return x.toFixed(2);
+function someFunc(val, isNumber) {
+    if (isNumber) {
+        val.toFixed(2);
+        isNaN(val);
+    }
+    else {
+        val.split('');
+        val.toUpperCase();
+        val.length;
+    }
 }
-console.log(fnE(10));
