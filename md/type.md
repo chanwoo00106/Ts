@@ -468,3 +468,59 @@ function someFunc(val: string | number, isNumber: boolean) {
   }
 }
 ```
+
+> <b style="font-size: 2rem">Non-null 단언 연산자</b><br>
+> 피연산자가 Nullish(null이나 undefined) 값이 아님을 단언할 수 있는데,<br>
+> 변수나 속성에서 간단하게 사용할 수 있기 때문에 유용합니다.
+
+> fnA 함수를 살펴보면, 매개 변수 x는 함수 내에서 toFixed를<br>
+> 사용하는 숫자 타입으로 처리되지만 null이나 undefined일 수 있기 때문에<br>
+> 에러가 발생합니다.
+>
+> 이를 타입 단언이나 `if` 조건문으로 해결할 수도 있지만,<br>
+> 마지막 함수와 같이 `!`를 사용하는 Non-null 단언 연산자를 이용해<br>
+> 간단하게 정리할 수 있습니다.
+
+> strictNullChecks를 false로 하면 전부 에러가 나지 않습니다
+
+```ts
+// Error - TS2533: Object is possibly 'null' or 'undefined'.
+function fnA(x: number | null | undefined) {
+  return x.toFixed(2);
+}
+
+// if statement
+function fnD(x: number | null | undefined) {
+  if (x) {
+    return x.toFixed(2);
+  }
+}
+
+// Type assertion
+function fnB(x: number | null | undefined) {
+  return (x as number).toFixed(2);
+}
+function fnC(x: number | null | undefined) {
+  return (<number>x).toFixed(2);
+}
+
+// Non-null assertion operator
+function fnE(x: number | null | undefined) {
+  return x!.toFixed(2);
+}
+```
+
+> 특히 컴파일 환경에서 체크하기 어려운 DOM 사용에서 유용합니다.<br>
+> 물론 일반적인 타입 단언을 사용할 수도 있습니다.
+
+```ts
+// Error - TS2531: Object is possibly 'null'.
+document.querySelector('.menu-item').innerHTML;
+
+// Type assertion
+(document.querySelector('.menu-item') as HTMLDivElement).innerHTML;
+(<HTMLDivElement>document.querySelector('.menu-item')).innerHTML;
+
+// Non-null assertion operator
+document.querySelector('.menu-item')!.innerHTML;
+```
