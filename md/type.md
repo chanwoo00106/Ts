@@ -319,3 +319,53 @@ let userB: IUser = { // Error ts(2739)
   age: false, // Error
 };
 ```
+
+> <b style="font-size: 2rem">Null과 Undefined</b><br>
+> 기본적으로 Null과 Undefined는 모든 타입의 하위 타입으로,<br>
+> 다음과 같이 각 타입에 할당할 수 있습니다.<br>
+> 심지어 서로의 타입에도 할당 가능합니다.
+>
+> strictNullChecks를 false로 하면 할 수 있음
+
+```ts
+const num: number = undefined;
+const str: string = null;
+const arr: string[] = [null, undefined];
+```
+
+> 단 void에는 Undefined를 할당할 수 없습니다.
+
+
+```ts
+let voi: void = undefined; // ok
+```
+
+> <b style="font-size: 2rem">Void</b><br>
+> Void는 일반적으로 값을 반환하지 않는 함수에서 사용합니다.<br>
+> : void 위치는 함수가 반환 타입을 명시하는 곳입니다.
+
+```ts
+function sayHello(name: string): void {
+  console.log(`${name} hello!`);
+}
+```
+
+값을 반환하지 않는 함수는 실제로는 `undefined`를 반환합니다.
+
+```ts
+function sayHello(name: string): void {
+  console.log(`${name} hello!`);
+}
+
+const hi: void = sayHello('world'); // Hello world
+console.log(hi); // undefined
+```
+
+```ts
+// Error - TS2355: A function whose declared type is neither 'void' nor 'any' must return a value.
+function sayHello(msg: string): undefined {
+  console.log(`Hello ${msg}`);
+}
+```
+
+

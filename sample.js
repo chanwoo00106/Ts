@@ -1,10 +1,8 @@
 "use strict";
-var userA = {
-    name: 'Hyung woo',
-    age: 123,
-    email: 'ilovejs@js.com'
-};
-var userB = {
-    name: 'anything',
-    // age: false, // Error
-};
+var num = undefined;
+var str = null;
+var obj = undefined;
+var arr = null;
+var und = null;
+var nul = undefined;
+var voi = null;
