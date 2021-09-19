@@ -1,22 +1,12 @@
-interface classTest {
+interface IItem {
+    [i: number]: string // Index signature
+}
+let item: IItem = ['a', 'b', 'c']; // Indexable type
+console.log(item[0]); // 'a' is string.
+console.log(item[1]); // 'b' is string.
+
+interface IUser {
+    [userProp: string]: string | number
     name: string,
-    sayHello(): string,
-    changeName(name: string): void
+    age: number
 }
-
-class User implements classTest {
-    constructor(public name: string) {
-        this.name = name;
-    }
-    sayHello() {
-        return `${this.name} hello!`;
-    }
-    changeName(name: string) {
-        this.name = name;
-    }
-}
-
-const teemo = new User('Teemo');
-console.log(teemo.sayHello());
-teemo.changeName('teemo')
-console.log(teemo.sayHello());

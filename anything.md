@@ -747,3 +747,49 @@ teemo.changeName('teemo')
 console.log(teemo.sayHello());
 ```
 
+# 인덱싱 가능 타입(Indexable types)
+> 인터페이스 IItem은 인덱스 시그니처를 가지고 있으며, 그 IItem을 타입(인터페이스)으로 하는 item이 있고,<br>
+> 그 item을 item[0]이나 item[1]과 같이 숫자로 인덱싱할 때 반환되는 값은 'a'나 b' 같은 문자여야 합니다.
+
+```ts
+interface IItem {
+  [itemIndex: number]: string // Index signature
+}
+let item: IItem = ['a', 'b', 'c']; // Indexable type
+console.log(item[0]); // 'a' is string.
+console.log(item[1]); // 'b' is string.
+console.log(item['0']); // Error - TS7015: Element implicitly has an 'any' type because index expression is not of type 'number'.
+```
+
+> 유니온 타입을 하면 아래와 같이 할 수 있음
+
+```ts
+interface IItem {
+  [i: number]: string | boolean | number[]
+}
+let item: IItem = ['Hello', false, [1, 2, 3]];
+console.log(item[0]); // Hello
+console.log(item[1]); // false
+console.log(item[2]); // [1, 2, 3]
+```
+
+> 인덱스 시그니처를 사용하면 다음 예제와 같이 인터페이스에 정의되지 않은 속성들을 사용할 때 유용합니다.<br>
+> 단, 해당 속성이 인덱스 시그니처에 정의된 반환 값을 가져야 함에 주의해야 합니다.
+
+```ts
+interface IUser {
+  [userProp: string]: string | number
+  name: string,
+  age: number,
+  test: boolean // error ts(2411)
+}
+let user: IUser = {
+  name: 'Neo',
+  age: 123,
+  email: 'thesecon@gmail.com',
+  isAdult: true // Error - TS2322: Type 'true' is not assignable to type 'string | number'.
+};
+console.log(user['name']); // 'Neo'
+console.log(user['age']); // 123
+console.log(user['email']); // thesecon@gmail.com
+```
