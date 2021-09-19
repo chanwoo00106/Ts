@@ -822,3 +822,39 @@ let country: ICountries[keyof ICountries]; // ICountries['KR' | 'US' | 'CP']
 country = '대한민국';
 country = '러시아'; // Error - TS2322: Type '"러시아"' is not assignable to type '"대한민국" | "미국" | "중국"'.
 ```
+
+# 인터페이스 확장
+
+> 인터페이스도 클래스처럼 extends 키워드를 활용해 상속할 수 있습니다.
+
+```ts
+interface IAnimal {
+  name: string
+}
+interface ICat extends IAnimal {
+  meow(): string
+}
+
+class Cat implements ICat { // Error - TS2420: Class 'Cat' incorrectly implements interface 'ICat'. Property 'name' is missing in type 'Cat' but required in type 'ICat'.
+  meow() {
+    return 'MEOW~'
+  }
+}
+```
+
+> 기존에 있던 인터페이스에 내용을 추가할 때 유용합니다.
+
+```ts
+interface IAnimal {
+  name: string
+}
+interface ICat extends IAnimal {
+  meow(): string
+}
+
+class Cat implements ICat { // Error - TS2420: Class 'Cat' incorrectly implements interface 'ICat'. Property 'name' is missing in type 'Cat' but required in type 'ICat'.
+  meow() {
+    return 'MEOW~'
+  }
+}
+```
