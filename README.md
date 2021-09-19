@@ -79,3 +79,4 @@ tsconfig.json 파일에 적는 것들
 - [제약 조건](anything.md#제약-조건)
 - [조건부 타입](anything.md#조건부-타입(Conditional-Types))
 - [오버로드](anything.md#Overloads)
+- [클래스](anything.md#class)

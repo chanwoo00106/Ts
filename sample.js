@@ -1,15 +1,35 @@
 "use strict";
-var user = {
-    name: 'Neo',
-    age: 36,
-    getData: function (data) {
-        if (typeof data === 'string') {
-            return data.split('');
-        }
-        else {
-            return data.toString();
-        }
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Animal = /** @class */ (function () {
+    function Animal(name) {
+        this.name = name;
     }
-};
-user.getData('Hello'); // ['h', 'e', 'l', 'l', 'o']
-user.getData(123); // '123'
+    return Animal;
+}());
+var Cat = /** @class */ (function (_super) {
+    __extends(Cat, _super);
+    function Cat() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Cat.prototype.getName = function () {
+        return "Cat name is " + this.name + ".";
+    };
+    return Cat;
+}(Animal));
+var cat;
+cat = new Cat('Lucy');
+console.log(cat.getName()); // Cat name is Lucy.
