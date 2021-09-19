@@ -793,3 +793,32 @@ console.log(user['name']); // 'Neo'
 console.log(user['age']); // 123
 console.log(user['email']); // thesecon@gmail.com
 ```
+
+# keyof
+
+> 인덱싱 가능 타입에서 keyof를 사용하면 속성 이름을 타입으로 사용할 수 있습니다.<br>
+> 인덱싱 가능 타입의 속성 이름들이 유니온 타입으로 적용됩니다.
+
+```ts
+interface ICountries {
+  KR: '대한민국',
+  US: '미국',
+  CP: '중국'
+}
+let country: keyof ICountries; // 'KR' | 'US' | 'CP'
+country = 'KR'; // ok
+country = 'RU'; // Error - TS2322: Type '"RU"' is not assignable to type '"KR" | "US" | "CP"'.
+```
+
+> 또는 keyof를 통한 인덱싱으로 타입의 개별 값에도 접근할 수 있습니다.
+
+```ts
+interface ICountries {
+  KR: '대한민국',
+  US: '미국',
+  CP: '중국'
+}
+let country: ICountries[keyof ICountries]; // ICountries['KR' | 'US' | 'CP']
+country = '대한민국';
+country = '러시아'; // Error - TS2322: Type '"러시아"' is not assignable to type '"대한민국" | "미국" | "중국"'.
+```
