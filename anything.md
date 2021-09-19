@@ -1040,37 +1040,3 @@ const a: MyType<number> = 123;
 > 만약 추론이 불가능 하면 null이 되겠지만 지금은 추론이 가능하기 때문에 변수 a는 123을 할당하게 됩니다.
 
 > 너무 어려우니 여기까지
-
-# this
-
-> 함수를 다루는 데 있어 가장 중요한 내용 중 하나가 바로 this입니다.<br>
-> 함수 내 this는 전역 객체를 참조하거나(sloppy mode), undefined(strict mode)가 되는 등<br>
-> 우리가 원하는 콘텍스트(context)를 잃고 다른 값이 되는 경우들이 있습니다.
-
-```ts
-const obj = {
-  a: 'Hello~',
-  b: function () {
-    console.log(this.a); // obj.a
-    // Inner function
-    function b() {
-      console.log(this.a); // global.a
-    }
-  }
-};
-```
-> 특히 ‘호출하지 않는 메소드’를 사용하는 경우에 `this`로 인한 문제가 발생합니다.<br>
-> 객체 데이터 `obj`에서 `b` 메소드는 `a` 속성을 `this`를 통해 참조하고 있습니다.
-
-```ts
-const obj = {
-  a: 'Hello~',
-  b: function () {
-    console.log(this.a);
-  }
-};
-```
-
-> 위 객체를 기준으로 아래 예제와 같이 ‘호출하지 않는 메소드’를 사용(할당)하는 경우,<br>
-> this가 유효한 콘텍스트를 잃어버리고 a를 참조할 수 없게 됩니다.
-
