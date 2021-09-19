@@ -1016,3 +1016,27 @@ type MyType<T> =
   T extends null ? 'Nul' :
   'Obj';
 ```
+
+# infer
+
+> `infer` 키워드를 사용해 타입 변수의 타입 추론 여부를 확인할 수 있습니다.<br>
+> 기본 문법은 다음과 같습니다.
+
+> U가 추론 가능한 타입이면 참, 아니면 거짓
+
+```ts
+T extends infer U ? X : Y
+```
+
+> 기본 구조는 위에서 살펴본 조건부 타입과 같습니다.
+
+```ts
+type MyType<T> = T extends infer R ? R : null;
+
+const a: MyType<number> = 123;
+```
+
+> `MyType<number>`에서 받은 타입 `number`가 되고 `infer` 키워드를 통해 타입 추론이 가능한지 확인합니다.<br>
+> 만약 추론이 불가능 하면 null이 되겠지만 지금은 추론이 가능하기 때문에 변수 a는 123을 할당하게 됩니다.
+
+> 너무 어려우니 여기까지
