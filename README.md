@@ -78,3 +78,5 @@ tsconfig.json 파일에 적는 것들
 - [제네릭](anything.md#제네릭(Generic))
 - [제약 조건](anything.md#제약-조건)
 - [조건부 타입](anything.md#조건부-타입(Conditional-Types))
+
+- [this](anything.md#this)
