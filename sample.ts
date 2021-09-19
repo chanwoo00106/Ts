@@ -1,9 +1,22 @@
-interface func {
-    (name: string): string
+interface classTest {
+    name: string,
+    sayHello(): string,
+    changeName(name: string): void
 }
 
-const sayHello: func = (n) => {
-    return `${n} hello!`;
+class User implements classTest {
+    constructor(public name: string) {
+        this.name = name;
+    }
+    sayHello() {
+        return `${this.name} hello!`;
+    }
+    changeName(name: string) {
+        this.name = name;
+    }
 }
 
-console.log(sayHello('Teemo'))
+const teemo = new User('Teemo');
+console.log(teemo.sayHello());
+teemo.changeName('teemo')
+console.log(teemo.sayHello());

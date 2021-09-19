@@ -70,3 +70,4 @@ tsconfig.json 파일에 적는 것들
 - [타입 가드(Guards)](anything.md#타입-가드(Guards))
 - [읽기 전용 속성(Readonly properties)](anything.md#읽기-전용-속성(Readonly-properties))
 - [함수 타입](anything.md#함수-타입)
+- [클래스 타입](anything.md#클래스-타입)

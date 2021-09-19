@@ -717,3 +717,33 @@ const sayHello: func = (n) => {
 
 console.log(sayHello('Teemo'))
 ```
+
+# 클래스 타입
+
+> 인터페이스로 클래스를 정의하는 경우, implements 키워드를 사용합니다.
+
+```ts
+interface classTest {
+    name: string,
+    sayHello(): string,
+    changeName(name: string): void
+}
+
+class User implements classTest {
+    constructor(public name: string) {
+        this.name = name;
+    }
+    sayHello() {
+        return `${this.name} hello!`;
+    }
+    changeName(name: string) {
+        this.name = name;
+    }
+}
+
+const teemo = new User('Teemo');
+console.log(teemo.sayHello());
+teemo.changeName('teemo')
+console.log(teemo.sayHello());
+```
+
