@@ -68,3 +68,4 @@ tsconfig.json 파일에 적는 것들
 - [Assertions](anything.md#Assertions)
 - [Non-null 단언 연산자](anything.md#Non-null-단언-연산자)
 - [타입 가드(Guards)](anything.md#타입-가드(Guards))
+- [읽기 전용 속성(Readonly properties)](anything.md#읽기-전용-속성(Readonly-properties))

@@ -640,3 +640,60 @@ let user: IUser = {
   age: 123
 };
 ```
+
+# 읽기 전용 속성(Readonly properties)
+
+> `readonly` 키워드를 사용하면 초기화된 값을 유지해야 하는 읽기 전용 속성을 정의할 수 있습니다.
+
+```ts
+interface IUser {
+  readonly name: string,
+  age: number
+}
+
+// 초기화
+let user: IUser = {
+  name: 'Neo',
+  age: 36
+};
+
+user.age = 85; // Ok
+user.name = 'Evan'; // Error - TS2540: Cannot assign to 'name' because it is a read-only property.
+```
+
+> 만약 모든 속성이 readonly일 경우, 유틸리티(Utility)나 단언(Assertion) 타입을 활용할 수 있습니다.
+
+```ts
+// All readonly properties
+interface IUser {
+  readonly name: string,
+  readonly age: number
+}
+let user: IUser = {
+  name: 'Neo',
+  age: 36
+};
+user.age = 85; // Error
+user.name = 'Evan'; // Error
+
+// Readonly Utility
+interface IUser {
+  name: string,
+  age: number
+}
+let user: Readonly<IUser> = {
+  name: 'Neo',
+  age: 36
+};
+user.age = 85; // Error
+user.name = 'Evan'; // Error
+
+
+// Type assertion
+let user = {
+  name: 'Neo',
+  age: 36
+} as const;
+user.age = 85; // Error
+user.name = 'Evan'; // Error
+```
