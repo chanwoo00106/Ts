@@ -77,3 +77,4 @@ tsconfig.json 파일에 적는 것들
 - [타입 별칭](anything.md#타입-별칭(Type-Aliases))
 - [제네릭](anything.md#제네릭(Generic))
 - [제약 조건](anything.md#제약-조건)
+- [조건부 타입](anything.md#조건부-타입(Conditional-Types))

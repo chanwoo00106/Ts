@@ -921,7 +921,7 @@ toArray(1, '2'); // Number & String
 
 > 이번에는 Generic을 사용합니다.<br>
 > 함수 이름 우측에 <T>를 작성해 시작합니다.<br>
-> T는 타입 변수(Type variable)로 사용자가 제공한 타입으로 변환될 식별자입니다.
+> T는 타입 변수로 사용자가 제공한 타입으로 변환될 식별자입니다.
 
 ```ts
 function toArray<T>(a: T, b: T): T[] {
@@ -936,7 +936,7 @@ toArray<number>(1, '2'); // Error
 
 # 제약 조건
 
-> 아래 코드는 별도의 제약 조건(Constraints)이 없어서 모든 타입이 허용됩니다.
+> 아래 코드는 별도의 제약 조건이 없어서 모든 타입이 허용됩니다.
 
 ```ts
 interface MyType<T> {
@@ -962,7 +962,7 @@ const dataD: MyType<number[]> = {
 };
 ```
 
-> 만약 타입 변수 T가 string과 number인 경우만 허용하려면 아래 예제와 같이 extends 키워드를 사용하는 제약 조건을 추가할 수 있습니다.
+> 만약 타입 변수 T가 string과 number인 경우만 허용하려면 아래 예제와 같이 `extends` 키워드를 사용하는 제약 조건을 추가할 수 있습니다.
 
 ```ts
 interface MyType<T extends string | number> {
@@ -986,4 +986,33 @@ const dataD: MyType<number[]> = { // TS2344: Type 'number[]' does not satisfy th
   name: 'Data D',
   value: [1, 2, 3, 4]
 };
+```
+
+# 조건부 타입(Conditional Types)
+
+> `extends`는 삼항 연산자를 사용할 수 있습니다.
+
+```ts
+type U = string | number | boolean;
+
+// type 식별자 = 타입 구현
+type MyType<T> = T extends U ? string : never;
+
+// interface 식별자 { 타입 구현 }
+interface IUser<T> {
+  name: string,
+  age: T extends U ? number : never
+}
+```
+
+> 다음과 같이 삼항 연산자를 연속해서 사용할 수도 있습니다.
+
+```ts
+type MyType<T> =
+  T extends string ? 'Str' :
+  T extends number ? 'Num' :
+  T extends boolean ? 'Boo' :
+  T extends undefined ? 'Und' :
+  T extends null ? 'Nul' :
+  'Obj';
 ```
