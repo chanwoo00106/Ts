@@ -1,10 +1,9 @@
-function someFunc(val: string | number, isNumber: boolean) {
-    if (typeof val === 'number') {
-        val.toFixed(2);
-        isNaN(val);
-    } else {
-        val.split('');
-        val.toUpperCase();
-        val.length;
-    }
+interface func {
+    (name: string): string
 }
+
+const sayHello: func = (n) => {
+    return `${n} hello!`;
+}
+
+console.log(sayHello('Teemo'))

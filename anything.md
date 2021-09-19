@@ -697,3 +697,23 @@ let user = {
 user.age = 85; // Error
 user.name = 'Evan'; // Error
 ```
+
+# 함수 타입
+
+> 함수 타입을 인터페이스로 정의하는 경우, 호출 시그니처(Call signature)라는 것을 사용합니다.<br>
+> 호출 시그니처는 다음과 같이 함수의 매개 변수(parameter)와 반환 타입을 지정합니다.
+
+> interface `func`로 함수 타입을 정의하고 매개변수 `name`을 가지고 string 타입을 반환 합니다.<br>
+> 매개변수 이름은 같을 필요는 없습니다
+
+```ts
+interface func {
+  (name: string): string
+}
+
+const sayHello: func = (n) => {
+  return `${n} hello!`;
+}
+
+console.log(sayHello('Teemo'))
+```
