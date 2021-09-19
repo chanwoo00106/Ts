@@ -933,3 +933,57 @@ toArray<string>('1', '2');
 toArray<string | number>(1, '2');
 toArray<number>(1, '2'); // Error
 ```
+
+# 제약 조건
+
+> 아래 코드는 별도의 제약 조건(Constraints)이 없어서 모든 타입이 허용됩니다.
+
+```ts
+interface MyType<T> {
+  name: string,
+  value: T
+}
+
+const dataA: MyType<string> = {
+  name: 'Data A',
+  value: 'Hello world'
+};
+const dataB: MyType<number> = {
+  name: 'Data B',
+  value: 1234
+};
+const dataC: MyType<boolean> = {
+  name: 'Data C',
+  value: true
+};
+const dataD: MyType<number[]> = {
+  name: 'Data D',
+  value: [1, 2, 3, 4]
+};
+```
+
+> 만약 타입 변수 T가 string과 number인 경우만 허용하려면 아래 예제와 같이 extends 키워드를 사용하는 제약 조건을 추가할 수 있습니다.
+
+```ts
+interface MyType<T extends string | number> {
+  name: string,
+  value: T
+}
+
+const dataA: MyType<string> = {
+  name: 'Data A',
+  value: 'Hello world'
+};
+const dataB: MyType<number> = {
+  name: 'Data B',
+  value: 1234
+};
+const dataC: MyType<boolean> = { // TS2344: Type 'boolean' does not satisfy the constraint 'string | number'.
+  name: 'Data C',
+  value: true
+};
+const dataD: MyType<number[]> = { // TS2344: Type 'number[]' does not satisfy the constraint 'string | number'.
+  name: 'Data D',
+  value: [1, 2, 3, 4]
+};
+```
