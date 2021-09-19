@@ -75,3 +75,4 @@ tsconfig.json 파일에 적는 것들
 - [keyof](anything.md#keyof)
 - [인터페이스 확장](anything.md#인터페이스-확장)
 - [타입 별칭](anything.md#타입-별칭(Type-Aliases))
+- [제네릭](anything.md#제네릭(Generic))
