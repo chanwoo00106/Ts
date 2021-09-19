@@ -1,14 +1,15 @@
 "use strict";
-var obj = {
-    a: 'Hello~',
-    b: function () {
-        console.log(this.a);
+var user = {
+    name: 'Neo',
+    age: 36,
+    getData: function (data) {
+        if (typeof data === 'string') {
+            return data.split('');
+        }
+        else {
+            return data.toString();
+        }
     }
 };
-var b = obj.b;
-b(); // Cannot read property 'a' of undefined
-function someFn(cb) {
-    cb();
-}
-someFn(obj.b); // Cannot read property 'a' of undefined
-setTimeout(obj.b, 100); // undefined
+user.getData('Hello'); // ['h', 'e', 'l', 'l', 'o']
+user.getData(123); // '123'

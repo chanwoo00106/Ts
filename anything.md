@@ -1040,3 +1040,47 @@ const a: MyType<number> = 123;
 > 만약 추론이 불가능 하면 null이 되겠지만 지금은 추론이 가능하기 때문에 변수 a는 123을 할당하게 됩니다.
 
 > 너무 어려우니 여기까지
+
+
+# Overloads
+
+> 이름은 같지만 매개변수 타입과 반환 타입이 다른 여러 함수를 가질 수 있는 것을 말합니다.
+
+```ts
+function add(a: string, b: string): string; // 함수 선언
+function add(a: number, b: number): number; // 함수 선언
+function add(a: any, b: any): any { // 함수 구현
+  return a + b;
+}
+
+add('hello ', 'world~');
+add(1, 2);
+add('hello ', 2); // Error - No overload matches this call.
+```
+
+> 인터페이스나 타입 별칭 등의 메소드 정의에서도 오버로드를 활용할 수 있습니다.
+> 타입 단언이나 타입 가드를 통해 함수 선언부의 동적인 매개변수와 반환 값을 정의할 수 있습니다.
+
+```ts
+interface IUser {
+  name: string,
+  age: number,
+  getData(x: string): string[];
+  getData(x: number): string;
+}
+
+let user: IUser = {
+  name: 'Neo',
+  age: 36,
+  getData: (data: any) => {
+    if (typeof data === 'string') {
+      return data.split('');
+    } else {
+      return data.toString();
+    }
+  }
+};
+
+user.getData('Hello'); // ['h', 'e', 'l', 'l', 'o']
+user.getData(123); // '123'
+```
