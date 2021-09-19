@@ -80,3 +80,4 @@ tsconfig.json 파일에 적는 것들
 - [조건부 타입](anything.md#조건부-타입(Conditional-Types))
 - [오버로드](anything.md#Overloads)
 - [클래스](anything.md#class)
+- [클래스 수식어](anything.md#Modifiers)

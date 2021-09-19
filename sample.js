@@ -30,6 +30,7 @@ var Cat = /** @class */ (function (_super) {
     };
     return Cat;
 }(Animal));
-var cat;
-cat = new Cat('Lucy');
+var cat = new Cat('Lucy');
 console.log(cat.getName()); // Cat name is Lucy.
+cat.name = 'Tiger';
+console.log(cat.getName()); // Cat name is Tiger.

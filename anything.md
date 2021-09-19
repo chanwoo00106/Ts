@@ -1106,3 +1106,141 @@ let cat: Cat;
 cat = new Cat('Lucy');
 console.log(cat.getName()); // Cat name is Lucy.
 ```
+
+# Modifiers
+
+> 클래스 멤버(속성, 메소드)에서 사용할 수 있는 접근 제어자(Access Modifiers)들이 있습니다.
+
+접근 제어자|의미|범위
+---|---|---
+public|어디서나 자유롭게 접근 가능(생략 가능)|속성, 메소드
+protected|나와 파생된 후손 클래스 내에서 접근 가능|속성, 메소드
+private|내 클래스에서만 접근 가능|속성, 메소드
+
+다음 수식어들은 위 접근 제어자와 함께 사용할 수 있습니다.
+`static`의 경우 타입스크립트에서는 정적 메소드뿐만 아니라 정적 속성도 사용할 수 있습니다.
+
+```ts
+class Animal {
+  // public 수식어 사용(생략 가능)
+  public name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+class Cat extends Animal {
+  getName(): string {
+    return `Cat name is ${this.name}.`;
+  }
+}
+let cat = new Cat('Lucy');
+console.log(cat.getName()); // Cat name is Lucy.
+
+cat.name = 'Tiger';
+console.log(cat.getName()); // Cat name is Tiger.
+```
+
+> `Animal` 클래스의 `name` 속성은 protected이기 때문에 파생된 자식 클래스(Cat)에서 `this.name`으로 참조할 수는 있지만,<br>
+> 인스턴스에서 `cat.name`으로는 접근할 수 없습니다.
+
+```ts
+class Animal {
+  // protected 수식어 사용
+  protected name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+class Cat extends Animal {
+  getName(): string {
+    return `Cat name is ${this.name}.`;
+  }
+}
+let cat = new Cat('Lucy');
+console.log(cat.getName()); // Cat name is Lucy.
+console.log(cat.name); // Error - TS2445: Property 'name' is protected and only accessible within class 'Animal' and its subclasses.
+
+cat.name = 'Tiger'; // Error - TS2445: Property 'name' is protected and only accessible within class 'Animal' and its subclasses.
+console.log(cat.getName());
+```
+
+> `Animal` 클래스의 `name` 속성은 `private`이기 때문에 파생된 자식 클래스(Cat)에서 `this.name`으로 참조할 수 없고,<br>
+> 인스턴스에서도 `cat.name`으로 접근할 수도 없습니다.
+
+```ts
+class Animal {
+  // private 수식어 사용
+  private name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+class Cat extends Animal {
+  getName(): string {
+    return `Cat name is ${this.name}.`; // Error - TS2341: Property 'name' is private and only accessible within class 'Animal'
+  }
+}
+let cat = new Cat('Lucy');
+console.log(cat.getName());
+console.log(cat.name); // Error - TS2341: Property 'name' is private and only accessible within class 'Animal'.
+
+cat.name = 'Tiger'; // Error - TS2341: Property 'name' is private and only accessible within class 'Animal'.
+console.log(cat.getName());
+```
+
+> 생성자 메소드에서 인수 타입 선언과 동시에 접근 제어자를 사용하면 바로 속성 멤버로 정의할 수 있습니다.
+
+```ts
+class Cat {
+  constructor(public name: string, protected age: number) {}
+  getName() {
+    return this.name;
+  }
+  getAge() {
+    return this.age;
+  }
+}
+
+const cat = new Cat('Neo', 2);
+console.log(cat.getName()); // Neo
+console.log(cat.getAge()); // 2
+```
+
+> `static`으로 정적 메소드만 생성할 수 있었는데, 타입스크립트에서는 정적 속성도 생성할 수 있습니다.<br>
+> 정적 속성은 클래스 바디에서 속성의 타입 선언과 같이 사용하며, 정적 메소드와 다르게 클래스 바디에서 값을 초기화할 수 없기 때문에<br>
+> `constructor` 혹은 메소드에서 초기화가 필요합니다.
+
+```ts
+class Cat {
+  static legs: number;
+  constructor() {
+    Cat.legs = 4; // Init static property.
+  }
+}
+console.log(Cat.legs); // undefined
+new Cat();
+console.log(Cat.legs); // 4
+
+class Dog {
+  // Init static method.
+  static getLegs() {
+    return 4;
+  }
+}
+console.log(Dog.getLegs()); // 4
+```
+
+> readonly을 사용하면 해당 속성은 ‘읽기 전용’입니다.<br>
+> 그리고 static과 readonly는 접근 제어자와 같이 사용할 수 있습니다.
+
+```ts
+class Animal {
+  readonly name: string;
+  constructor(n: string) {
+    this.name = n;
+  }
+}
+let dog = new Animal('Charlie');
+console.log(dog.name); // Charlie
+dog.name = 'Tiger'; // Error - TS2540: Cannot assign to 'name' because it is a read-only property.
+```
