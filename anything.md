@@ -1420,3 +1420,32 @@ console.log(bar); // false
 const baz = 0 ?? 12;
 console.log(baz); // 0
 ```
+
+# export import
+
+> 타입스크립트는 일반적인 변수나 함수, 클래스뿐만 아니라 다음과 같이 인터페이스나 타입 별칭도 모듈로 내보낼 수 있습니다.<br>
+> 자바스크립트는 `esm` 이라는 모듈을 설치해야 `import`를 사용할 수 있다
+
+```ts
+// myTypes.ts
+
+// 인터페이스 내보내기
+export interface IUser {
+  name: string,
+  age: number
+}
+
+// 타입 별칭 내보내기
+export type MyType = string | number;
+```
+```ts
+// 선언한 모듈(myTypes.ts) 가져오기
+import { IUser, MyType } from './myTypes';
+
+const user: IUser = {
+  name: 'HEROPY',
+  age: 85
+};
+
+const something: MyType = true; // Error - TS2322: Type 'true' is not assignable to type 'MyType'.
+```
