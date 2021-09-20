@@ -1327,3 +1327,48 @@ const sum = add(2, undefined);
 console.log(sum);
 ```
 
+# 속성과 매소드
+
+> `?` 키워드를 속성(Properties)과 메소드(Methods) 타입 선언에도 사용할 수 있습니다.
+
+```ts
+interface IUser {
+  name: string,
+  age: number,
+  isAdult?: boolean
+}
+
+let user1: IUser = {
+  name: 'Neo',
+  age: 123,
+  isAdult: true
+};
+
+let user2: IUser = { // error 가 발생하지 않음
+  name: 'Evan',
+  age: 456
+};
+```
+
+> type이나 class에도 사용 가능
+
+```ts
+interface IUser {
+  name: string,
+  age: number,
+  isAdult?: boolean,
+  validate?(): boolean
+}
+type TUser = {
+  name: string,
+  age: number,
+  isAdult?: boolean,
+  validate?(): boolean
+}
+abstract class CUser {
+  abstract name: string;
+  abstract age: number;
+  abstract isAdult?: boolean;
+  abstract validate?(): boolean;
+}
+```
