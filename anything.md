@@ -1449,3 +1449,46 @@ const user: IUser = {
 
 const something: MyType = true; // Error - TS2322: Type 'true' is not assignable to type 'MyType'.
 ```
+
+# 모듈의 타입 선언
+
+```
+npm install lodash
+```
+
+```ts
+import * as _ from 'lodash'; // Error - TS2307: Cannot find module 'lodash'.
+
+console.log(_.camelCase('import lodash module'));
+```
+
+> 모듈 구현(implement)과 타입 선언(declaration)이 동시에 이뤄지는 타입스크립트와 달리,<br>
+> 구현만 존재하는 자바스크립트 모듈(E.g. Lodash)을 사용하는 경우, 컴파일러가 이해할 수 있는 모듈의 타입 선언이 필요하며,<br>
+> 이를 대부분 .d.ts파일로 만들어 제공하게 됩니다.
+
+> 루트 경로에 lodash.d.ts 파일을 생성합니다.
+
+> 모듈 가져오기(`Import`)가 가능하도록 `module` 키워드를 사용해 모듈 이름을 명시합니다.<br>
+> 그리고 그 범위 안에서, 타입(`interface`)을 가진 변수(`_`)를 선언하고 내보내기(`Export`)만 하면 됩니다.
+
+> 타입스크립트 컴파일러가 이해할 수 있도록 declare 키워드를 통해 선언해야 합니다
+
+```ts
+// lodash.d.ts
+
+// 모듈의 타입 선언(Ambient module declaration)
+declare module 'lodash' {
+  // 1. 타입(인터페이스) 선언
+  interface ILodash {
+    camelCase(str?: string): string
+  }
+
+  // 2. 타입(인터페이스)을 가지는 변수 선언
+  const _: ILodash;
+
+  // 3. 내보내기(CommonJS)
+  export = _;
+}
+```
+
+여기까지

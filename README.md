@@ -87,3 +87,4 @@ tsconfig.json 파일에 적는 것들
 - [속성과 매소드](anything.md#속성과-매소드)
 - [체이닝](anything.md#체이닝)
 - [Nullish-병합-연산자](anything.md#Nullish-병합-연산자)
+- [모듈의 타입 선언](anything.md#모듈의-타입-선언)

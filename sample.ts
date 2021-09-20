@@ -1,5 +1,3 @@
-function add(x: number, y?: number): number {
-    return x + (y || 0);
-}
-const sum = add(2);
-console.log(sum);
+import * as _ from 'lodash'; // Error - TS2307: Cannot find module 'lodash'.
+
+console.log(_.camelCase('import lodash module'));
