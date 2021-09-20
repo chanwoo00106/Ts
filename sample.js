@@ -15,22 +15,31 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Animal = /** @class */ (function () {
-    function Animal(name) {
-        this.name = name;
+    function Animal() {
     }
     return Animal;
 }());
 var Cat = /** @class */ (function (_super) {
     __extends(Cat, _super);
-    function Cat() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Cat(name) {
+        var _this = _super.call(this) || this;
+        _this.name = name;
+        return _this;
     }
     Cat.prototype.getName = function () {
-        return "Cat name is " + this.name + ".";
+        return this.name;
     };
     return Cat;
 }(Animal));
+// new Animal(); // Error - TS2511: Cannot create an instance of an abstract class.
 var cat = new Cat('Lucy');
-console.log(cat.getName()); // Cat name is Lucy.
-cat.name = 'Tiger';
-console.log(cat.getName()); // Cat name is Tiger.
+console.log(cat.getName()); // Lucy
+var Dog = /** @class */ (function () {
+    function Dog(name) {
+        this.name = name;
+    }
+    Dog.prototype.getName = function () {
+        return this.name;
+    };
+    return Dog;
+}());

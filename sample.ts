@@ -1,17 +1,28 @@
-class Animal {
-  // public 수식어 사용(생략 가능)
-  public name: string;
-  constructor(name: string) {
-    this.name = name;
-  }
+abstract class Animal {
+    abstract name: string; // 파생된 클래스에서 구현해야 합니다.
+    abstract getName(): string; // 파생된 클래스에서 구현해야 합니다.
 }
 class Cat extends Animal {
-  getName(): string {
-    return `Cat name is ${this.name}.`;
-  }
+    constructor(public name: string) {
+        super();
+    }
+    getName() {
+        return this.name;
+    }
 }
-let cat = new Cat('Lucy');
-console.log(cat.getName()); // Cat name is Lucy.
 
-cat.name = 'Tiger';
-console.log(cat.getName()); // Cat name is Tiger.
+// new Animal(); // Error - TS2511: Cannot create an instance of an abstract class.
+const cat = new Cat('Lucy');
+console.log(cat.getName()); // Lucy
+
+// Interface
+interface IAnimal {
+    name: string;
+    getName(): string;
+}
+class Dog implements IAnimal {
+    constructor(public name: string) { }
+    getName() {
+        return this.name;
+    }
+}
