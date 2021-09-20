@@ -88,3 +88,4 @@ tsconfig.json 파일에 적는 것들
 - [체이닝](anything.md#체이닝)
 - [Nullish-병합-연산자](anything.md#Nullish-병합-연산자)
 - [모듈의 타입 선언](anything.md#모듈의-타입-선언)
+- [유틸리티 타입](anything.md#유틸리티-타입)
