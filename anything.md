@@ -1491,4 +1491,24 @@ declare module 'lodash' {
 }
 ```
 
-여기까지
+> 너무 어려워서 다시 정리를 하자면<br>
+> 확장자가 d.ts 파일은 타입들을 정리해 놓은 파일이다<br>
+> 그래서 저 파일 안에는 `type`이나 `interface`같은 것 들을 넣으면 된다.<br>
+> 그리고 그것들을 export 해 놓으면 다른 파일에서 필요할 때 import 해서 쓰면 된다.
+
+```ts
+test.d.ts
+export type AGE = number;
+```
+```ts
+import {AGE} from './test.d '
+const age: AGE;
+```
+
+> 타입 정의가 너무 길면 `d.ts`파일을 만들기도 한다.
+> 그리고 마지막으로 npm i 를 하면서 가끔씩 @types 라는 파일을 봤을 텐데<br>
+```
+ex)
+npm i @types/jquery --save-dev
+```
+> 그 파일은 이건 특정 모듈에 타입 파일이다. 그래서 그 파일을 보면 대부분 `d.ts`파일로 이루어져 있다.
