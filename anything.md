@@ -1372,3 +1372,36 @@ abstract class CUser {
   abstract validate?(): boolean;
 }
 ```
+
+# 체이닝
+
+> str 속성이 undefined일 경우 toString 메소드를 사용할 수 없기 때문에 에러가 발생합니다.<br>
+> str 속성이 문자열이라는 것을 단언하면 문제를 해결할 수 있지만,<br>
+> 더 간단하게 선택적 체이닝(Optional Chaining) 연산자 ?.를 사용할 수 있습니다.
+
+```ts
+function toString(str: string | undefined) {
+  return str.toString();
+}
+
+// Type Assertion
+function toString(str: string | undefined) {
+  return (str as string).toString();
+}
+
+// Optional Chaining
+function toString(str: string | undefined) {
+  return str?.toString();
+}
+```
+
+> 특히 && 연산자를 사용해 각 속성을 Nullish 체크(null이나 undefined를 확인)하는 부분에서 유용합니다.
+
+```ts
+// Before
+if (foo && foo.bar && foo.bar.baz) {}
+
+// After-ish
+if (foo?.bar?.baz) {}
+```
+
