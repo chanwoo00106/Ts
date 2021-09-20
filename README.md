@@ -84,3 +84,6 @@ tsconfig.json 파일에 적는 것들
 - [추상 클래스](anything.md#Abstract)
 - [Optional](anything.md#Optional)
 - [매개 변수](anything.md#Parameters)
+- [속성과 매소드](anything.md#속성과-매소드)
+- [체이닝](anything.md#체이닝)
+- [Nullish-병합-연산자](anything.md#Nullish-병합-연산자)

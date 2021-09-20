@@ -1405,3 +1405,18 @@ if (foo && foo.bar && foo.bar.baz) {}
 if (foo?.bar?.baz) {}
 ```
 
+# Nullish 병합 연산자
+
+> 널 병합 연산자 (??) 는 왼쪽 피연산자가 null 또는 undefined일 때 오른쪽 피연산자를 반환하고,<br>
+> 그렇지 않으면 왼쪽 피연산자를 반환하는 논리 연산자이다.
+
+```ts
+const foo = null ?? 'Hello nullish.';
+console.log(foo); // Hello nullish.
+
+const bar = false ?? true;
+console.log(bar); // false
+
+const baz = 0 ?? 12;
+console.log(baz); // 0
+```
