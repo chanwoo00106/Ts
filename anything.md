@@ -1296,3 +1296,34 @@ abstract class Animal {
   }
 }
 ```
+
+# Optional
+
+> 지금부터는 Optional에 대해서 설명할 건데 대충 개념을 설명하자면<br>
+> `?`라는 키워드를 사용해 선택적으로 하는 것을 말합니다.
+
+# Parameters
+
+> 타입을 선언할 때 선택적 매개 변수(Optional Parameter)를 지정할 수 있습니다.<br>
+다음 예제를 보면 `?` 키워드를 사용해 `y`를 `선택적 매개 변수`로 지정했습니다.<br>
+따라서 `y`가 받을 `인수가 없어도 에러가 발생하지 않습니다.`<br>
+
+```ts
+function add(x: number, y?: number): number {
+  return x + (y || 0);
+}
+const sum = add(2);
+console.log(sum);
+```
+
+> 위 예제는 정확히 다음 예제와 같습니다.<br>
+> 즉, `?` 키워드 사용은 `| undefined`를 추가하는 것과 같습니다.
+
+```ts
+function add(x: number, y: number | undefined): number {
+  return x + (y || 0);
+}
+const sum = add(2, undefined);
+console.log(sum);
+```
+
