@@ -1,13 +1,11 @@
 import React from 'react';
-import './App.css';
 import Greetings from './Greetings';
 
-function App() {
-  return (
-    <div className="App">
-      <Greetings name={"찬우"} />
-    </div>
-  );
-}
+const App: React.FC = () => {
+  const onClick = (name: string) => {
+    console.log(`${name} says hello`);
+  };
+  return <Greetings name="Hello" onClick={onClick} />;
+};
 
 export default App;
