@@ -1,11 +1,8 @@
 import React from 'react';
-import Greetings from './Greetings';
+import MyForm from './MyForm';
 
 const App: React.FC = () => {
-  const onClick = (name: string) => {
-    console.log(`${name} says hello`);
-  };
-  return <Greetings name="Hello" onClick={onClick} />;
+  return <MyForm />;
 };
 
 export default App;

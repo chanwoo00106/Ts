@@ -155,3 +155,37 @@ const App: React.FC = () => {
 export default App;
 ```
 
+typescript로 useState를 하면 타입을 정해줘도 되고 안해도 된다<br>
+처음에 숫자 또는 문자열 같은걸 넣어주면 알아서 타입을 추론해 준다
+
+```ts
+const [count, setCount] = useState(0);
+// 또는
+const [count, setCount] = useState<number>(0);
+```
+
+## react ts 로 counter 만들기
+
+```ts
+// src/Counter.tsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState<number>(0);
+  const onIncrease = () => setCount(count + 1);
+  const onDecrease = () => setCount(count - 1);
+  return (
+    <div>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={onIncrease}>+1</button>
+        <button onClick={onDecrease}>-1</button>
+      </div>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+어느 정도 느낌이 왔다 하면 2개 이상의 input 상태도 관리 해보고 하면 된다.
