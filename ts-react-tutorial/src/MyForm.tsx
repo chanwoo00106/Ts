@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 interface IForm {
     email: string,
@@ -6,6 +6,8 @@ interface IForm {
 }
 
 export default function MyForm() {
+    const emailRef = useRef<HTMLInputElement>(null);
+
     // const [input, setInput] = useState({ email: "", password: "" });
     const [input, setInput] = useState<IForm>({ email: "", password: "" });
 
@@ -23,11 +25,12 @@ export default function MyForm() {
             email: "",
             password: ""
         });
+        emailRef.current?.focus();
     }
 
     return (
         <form onSubmit={onSubmit}>
-            <input type="text" value={input.email} name="email" onChange={onChange} />
+            <input ref={emailRef} type="text" value={input.email} name="email" onChange={onChange} />
             <input type="password" value={input.password} name="password" onChange={onChange} />
             <button type="submit">submit</button>
         </form>
