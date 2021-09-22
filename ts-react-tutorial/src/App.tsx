@@ -1,8 +1,8 @@
 import React from 'react';
-import Counter from './Counter';
+import UseReducerSample from './UseReducerSample';
 
 const App: React.FC = () => {
-  return <Counter />;
+  return <UseReducerSample />;
 };
 
 export default App;
