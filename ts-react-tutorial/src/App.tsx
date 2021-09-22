@@ -1,8 +1,8 @@
 import React from 'react';
-import MyForm from './MyForm';
+import Counter from './Counter';
 
 const App: React.FC = () => {
-  return <MyForm />;
+  return <Counter />;
 };
 
 export default App;
