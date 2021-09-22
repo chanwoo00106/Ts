@@ -1,8 +1,13 @@
 import React from 'react';
-import UseReducerSample from './UseReducerSample';
+import { SampleProvider } from './SampleContext';
+import ReducerSample from './ReducerSample'
 
 const App: React.FC = () => {
-  return <UseReducerSample />;
+  return (
+    <SampleProvider>
+      <ReducerSample />
+    </SampleProvider>
+  );
 };
 
 export default App;

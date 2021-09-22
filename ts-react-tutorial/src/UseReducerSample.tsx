@@ -53,14 +53,15 @@ export default function UseReducerSample() {
     const toggleGood = () => dispatch({ type: 'TOOGLE_GOOD' });
     return (
         <>
-            <div><p>{state.count}</p></div>
-            <div><p>{state.text}</p></div>
-            <div><p>{state.color}</p></div>
+            <div><p>count: {state.count}</p></div>
+            <div><p>text: {state.text}</p></div>
+            <div><p>color: {state.color}</p></div>
+            <div><p>isGood: {state.isGood ? 'true' : 'false'}</p></div>
             <div>
                 <button onClick={setCount}>SET_COUNT</button>
                 <button onClick={setText}>SET_TEXT</button>
                 <button onClick={setColor}>SET_COLOR</button>
-                {state.isGood && <button onClick={toggleGood}>TOOGLE_GOOD</button>}
+                <button onClick={toggleGood}>TOOGLE_GOOD</button>
             </div>
         </>
     )
