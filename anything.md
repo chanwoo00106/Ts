@@ -1535,3 +1535,14 @@ InstanceType|TYPE의 인스턴스 타입을 반환 (클래스)|`<TYPE>`
 ThisParameterType|TYPE의 명시적 this 매개변수 타입을 새로운 타입으로 반환 (함수)|`<TYPE>`
 OmitThisParameter|TYPE의 명시적 this 매개변수를 제거한 새로운 타입을 반환 (함수)|`<TYPE>`
 ThisType|TYPE의 this 컨텍스트(Context)를 명시, 별도 반환 없음! (인터페이스)|`<TYPE>`
+
+# 몰랐던 문법 설명
+
+`as const` 라고 변수 선언 뒤에 적어주면 `readonly` 형식으로 저장이 된다고 한다
+
+```ts
+const user = {
+  name: 'Teemo',
+  age: '10'
+} as const;
+```
