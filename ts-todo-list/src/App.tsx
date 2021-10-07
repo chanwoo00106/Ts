@@ -1,10 +1,10 @@
-
+import { Wrapper } from './App.styles';
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Wrapper>
+      hello
+    </Wrapper>
   );
 }
 
