@@ -49,14 +49,25 @@ const App = () => {
     })
   };
 
-  const handleRemoveFromCart = () => null;
+  const handleRemoveFromCart = (id: number) => {
+    setCartItems(prev => (
+      prev.reduce((ack, item) => {
+        if (item.id === id) {
+          if (item.amount === 1) return ack;
+          return [...ack, { ...item, amount: item.amount - 1 }];
+        } else {
+          return [...ack, item]
+        }
+      }, [] as CartItemType[])
+    ))
+  };
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Someting went wrong...</div>
 
   return (
     <Wrapper>
-      <Drawer anchor='right' open={cartOpen} onClick={() => setCartOpen(false)}>
+      <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
           CartItems={cartItems}
           addToCart={handleAddToCart}
