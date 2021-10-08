@@ -24,6 +24,7 @@ export const AddTodo = styled.div`
     display: grid;
     grid-template-columns: 8fr 2fr;
     gap: 10px;
+    margin: 20px 0;
 
     input {
         min-height: 35px;

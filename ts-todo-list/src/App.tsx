@@ -1,4 +1,5 @@
 import { Wrapper, AddTodo } from './App.styles';
+import { Todos } from './components/Todos';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <input placeholder="할일 입력" type="text" />
         <button>add</button>
       </AddTodo>
+      <Todos />
     </Wrapper>
   );
 }
