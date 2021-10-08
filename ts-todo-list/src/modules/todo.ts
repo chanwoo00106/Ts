@@ -4,7 +4,7 @@ import produce from 'immer';
 const ADD = 'todo/ADD' as const;
 const TOGGLE = 'todo/TOGGLE' as const;
 
-interface Data {
+export interface Data {
     id: number;
     title: string;
     date: string;

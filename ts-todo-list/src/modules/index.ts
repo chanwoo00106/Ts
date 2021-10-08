@@ -6,3 +6,5 @@ const reducer = combineReducers({
 });
 
 export default reducer;
+
+export type reducerType = ReturnType<typeof reducer>;

@@ -20,9 +20,9 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const AddTodo = styled.div`
+export const AddTodo = styled.form`
     display: grid;
-    grid-template-columns: 8fr 2fr;
+    grid-template-columns: 6fr 2fr 2fr;
     gap: 10px;
     margin: 20px 0;
 
@@ -32,6 +32,11 @@ export const AddTodo = styled.div`
         border: none;
         font-size: 1.5rem;
         border-bottom: 2px solid #48f592;
+    }
+
+    .date {
+        font-size: .7rem;
+        text-align: center;
     }
 
     button {
