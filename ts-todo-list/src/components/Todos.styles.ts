@@ -6,6 +6,21 @@ export const Wrapper = styled.ul`
     list-style: none;
     overflow: auto;
     padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(rgba(72, 245, 146, .6), #ffffff);
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        margin-left: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0, 0.4);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0,0,0, 0.6);
+    }
 
     li {
         display: flex;
@@ -14,7 +29,11 @@ export const Wrapper = styled.ul`
         padding: 10px;
         border-radius: 10px;
         margin-bottom: 5px;
-        box-shadow: 0 0 100000px black;
+        background-color: rgba(225,225,225, .6);
+
+        .line {
+            text-decoration: line-through;
+        }
 
         .information {
             display: flex;
@@ -22,6 +41,7 @@ export const Wrapper = styled.ul`
 
             .check {
                 color: #2be179;
+                cursor: pointer;
             }
         }
 

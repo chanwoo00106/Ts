@@ -3,6 +3,7 @@ import produce from 'immer';
 
 const ADD = 'todo/ADD' as const;
 const TOGGLE = 'todo/TOGGLE' as const;
+const REMOVE = 'todo/REMOVE' as const;
 
 export interface Data {
     id: number;
@@ -20,10 +21,13 @@ export const add = (title: string, date: string) => ({
 });
 
 export const toggle = (id: number) => ({ type: TOGGLE, id });
+export const remove = (id: number) => ({ type: REMOVE, id });
+
 
 type ActionType =
     | ReturnType<typeof add>
-    | ReturnType<typeof toggle>;
+    | ReturnType<typeof toggle>
+    | ReturnType<typeof remove>;
 
 let idx: number = 4
 const initialState: Data[] = data;
@@ -44,6 +48,9 @@ function todo(state = initialState, action: ActionType) {
                 const index = draft.findIndex(i => i.id === action.id);
                 draft[index].toggle = !draft[index].toggle;
             });
+
+        case REMOVE:
+            return { ...state.filter(i => i.id !== action.id) }
 
         default: return state;
     }

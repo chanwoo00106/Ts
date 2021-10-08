@@ -6,13 +6,21 @@ import React, { useState } from 'react';
 
 function App() {
   const [text, setText] = useState("");
-  const [date, setDate] = useState(`${new Date().getFullYear()}-${new Date().getMonth() + 2}-${new Date().getDate()}`);
+  const [date, setDate] = useState("");
   const dispatch = useDispatch();
 
   const onSubmit = (e: any) => {
     e.preventDefault();
     const inputDate = new Date(date);
-    dispatch(add(text, `${inputDate.getFullYear()}/${inputDate.getMonth()}/${inputDate.getDate()}`));
+    if (text === "") {
+      alert("할일를 입력해 주세요!");
+      return;
+    }
+    if (isNaN(inputDate.getMonth())) {
+      alert("날짜를 입력해 주세요!");
+      return;
+    }
+    dispatch(add(text, `${inputDate.getFullYear()}/${inputDate.getMonth() + 1}/${inputDate.getDate()}`));
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value);
