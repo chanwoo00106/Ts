@@ -20,7 +20,8 @@ function App() {
       alert("날짜를 입력해 주세요!");
       return;
     }
-    dispatch(add(text, `${inputDate.getFullYear()}/${inputDate.getMonth() + 1}/${inputDate.getDate()}`));
+    dispatch(add(text, `${inputDate.getFullYear()}-${inputDate.getMonth() + 1}-${inputDate.getDate()}`));
+    setText("");
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value);

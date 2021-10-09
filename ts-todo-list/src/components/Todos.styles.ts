@@ -30,6 +30,7 @@ export const Wrapper = styled.ul`
         border-radius: 10px;
         margin-bottom: 5px;
         background-color: rgba(225,225,225, .6);
+        box-shadow: 0 10px 10px rgba(0,0,0,.5);
 
         .line {
             text-decoration: line-through;
@@ -43,6 +44,13 @@ export const Wrapper = styled.ul`
                 color: #2be179;
                 cursor: pointer;
             }
+        }
+
+        .changeInput {
+            outline: none;
+            border: none;
+            padding-right: 10px;
+            background: none;
         }
 
         &:hover {
