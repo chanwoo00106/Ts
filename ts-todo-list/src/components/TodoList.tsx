@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { toggle, remove, change } from '../modules/todo';
-import { faCheckCircle as checkedCricle } from '@fortawesome/free-solid-svg-icons'
-import { faCheckCircle } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle as checkedCricle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDrag } from 'react-dnd';
 import { useState } from 'react';
 
 
@@ -18,6 +19,38 @@ interface Props {
 export const TodoList: React.FC<Props> = ({ data }) => {
     const [titleChange, setTitleChange] = useState({ TF: true, value: data.title });
     const [dateChange, setDateChange] = useState(true);
+
+    // const [{ isDragging }, drag] = useDrag(() => ({
+    //     type: ItemTypes.CARD,
+    //     item: { id, originalIndex },
+    //     collect: (monitor) => ({
+    //         isDragging: monitor.isDragging(),
+    //     }),
+    //     end: (item, monitor) => {
+    //         const { id: droppedId, originalIndex } = item;
+    //         const didDrop = monitor.didDrop();
+    //         if (!didDrop) {
+    //             moveCard(droppedId, originalIndex);
+    //         }
+    //     },
+    // }), [id, originalIndex, moveCard]);
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        name: data.id,
+        type: 'Irrelevant, for now',
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
+        // end: (item, monitor) => {
+        //     const { id: droppedId, originalIndex } = item;
+        //     const didDrop = monitor.didDrop();
+        //     if (!didDrop) {
+        //         moveCard(droppedId, originalIndex);
+        //     }
+        // },
+    }));
+
+    const opacity = isDragging ? 0.4 : 1;
 
     const dispatch = useDispatch();
 
@@ -64,18 +97,37 @@ export const TodoList: React.FC<Props> = ({ data }) => {
     }
 
     return (
-        <li onContextMenu={Delete}>
+        <li ref={drag} onContextMenu={Delete} style={{ opacity }}>
 
             {titleChange.TF ? (
-                <h3 onDoubleClick={Change} id="title" className={data.toggle ? "line" : ""}>{data.title}</h3>
+                <h3
+                    onDoubleClick={Change}
+                    id="title"
+                    className={data.toggle ? "line" : ""}
+                >
+                    {data.title}
+                </h3>
             ) : (
-                <input type="text" value={titleChange.value} onKeyPress={onKeyPress} className="changeInput" name="title" onChange={onChange} />
+                <input
+                    type="text"
+                    value={titleChange.value}
+                    onKeyPress={onKeyPress}
+                    className="changeInput"
+                    name="title"
+                    onChange={onChange}
+                />
             )}
 
             <div className="information">
 
                 {dateChange ? (
-                    <p onDoubleClick={Change} id="date" className={data.toggle ? "line" : ""}>{data.date}</p>
+                    <p
+                        onDoubleClick={Change}
+                        id="date"
+                        className={data.toggle ? "line" : ""}
+                    >
+                        {data.date}
+                    </p>
                 ) : (
                     <input type="date" name="date" onChange={onChange} />
                 )}
