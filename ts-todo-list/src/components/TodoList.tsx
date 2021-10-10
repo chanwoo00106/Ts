@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { toggle, remove, change } from '../modules/todo';
-import { faCheckCircle as checkedCricle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle as faCheckedCricle } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -100,7 +100,7 @@ export const TodoList: React.FC<Props> = ({ data }) => {
                 )}
 
                 {data.toggle ? (
-                    <FontAwesomeIcon onClick={onClick} className="check" size='lg' icon={checkedCricle} />
+                    <FontAwesomeIcon onClick={onClick} className="check" size='lg' icon={faCheckedCricle} />
                 ) : (
                     <FontAwesomeIcon onClick={onClick} className="check" size='lg' icon={faCheckCircle} />
                 )}
