@@ -31,7 +31,6 @@ export const Wrapper = styled.ul`
         margin-bottom: 5px;
         background-color: rgba(225,225,225, .6);
         box-shadow: 0 10px 10px rgba(0,0,0,.5);
-        cursor: move;
 
         .line {
             text-decoration: line-through;

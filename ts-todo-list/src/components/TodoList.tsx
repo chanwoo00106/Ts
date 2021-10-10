@@ -3,7 +3,6 @@ import { toggle, remove, change } from '../modules/todo';
 import { faCheckCircle as checkedCricle } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDrag } from 'react-dnd';
 import { useState } from 'react';
 
 
@@ -19,38 +18,6 @@ interface Props {
 export const TodoList: React.FC<Props> = ({ data }) => {
     const [titleChange, setTitleChange] = useState({ TF: true, value: data.title });
     const [dateChange, setDateChange] = useState(true);
-
-    // const [{ isDragging }, drag] = useDrag(() => ({
-    //     type: ItemTypes.CARD,
-    //     item: { id, originalIndex },
-    //     collect: (monitor) => ({
-    //         isDragging: monitor.isDragging(),
-    //     }),
-    //     end: (item, monitor) => {
-    //         const { id: droppedId, originalIndex } = item;
-    //         const didDrop = monitor.didDrop();
-    //         if (!didDrop) {
-    //             moveCard(droppedId, originalIndex);
-    //         }
-    //     },
-    // }), [id, originalIndex, moveCard]);
-
-    const [{ isDragging }, drag] = useDrag(() => ({
-        name: data.id,
-        type: 'Irrelevant, for now',
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
-        // end: (item, monitor) => {
-        //     const { id: droppedId, originalIndex } = item;
-        //     const didDrop = monitor.didDrop();
-        //     if (!didDrop) {
-        //         moveCard(droppedId, originalIndex);
-        //     }
-        // },
-    }));
-
-    const opacity = isDragging ? 0.4 : 1;
 
     const dispatch = useDispatch();
 
@@ -97,7 +64,7 @@ export const TodoList: React.FC<Props> = ({ data }) => {
     }
 
     return (
-        <li ref={drag} onContextMenu={Delete} style={{ opacity }}>
+        <li onContextMenu={Delete}>
 
             {titleChange.TF ? (
                 <h3
