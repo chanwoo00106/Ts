@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     width: 30vw;
-    height:60vh;
+    height:65vh;
     border-radius: 10px;
     margin: 0 auto;
     display: flex;
@@ -27,10 +27,17 @@ export const Wrapper = styled.div`
         height: 40px;
         margin-bottom: 30px;
     }
+
+    .over {
+        width: 110%;
+        overflow: auto;
+        padding: 10px;
+    }
 `;
 
 export const Input = styled.input`
     max-height: 40px;
+    min-height: 40px;
     outline: none;
     border: none;
     border-radius: 10px;
@@ -40,6 +47,7 @@ export const Input = styled.input`
 
 export const Btn = styled.button`
     max-height: 40px;
+    min-height: 40px;
     border: none;
     outline: none;
     border-radius: 10px;
@@ -57,7 +65,21 @@ export const Btn = styled.button`
 
 export const ResultProfile = styled.div`
     width: 100%;
-
     display: grid;
     grid-template-columns: 3fr 7fr;
+    gap: 20px;
+    background-color: rgba(0,0,0,.2);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    img {
+        width: 100px;
+        border-radius: 100px;
+    }
+    .information {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 `;
