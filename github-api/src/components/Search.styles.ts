@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
         grid-template-columns: 8fr 1fr;
         gap: 10px;
         height: 40px;
+        margin-bottom: 30px;
     }
 `;
 
@@ -52,4 +53,11 @@ export const Btn = styled.button`
     &:not(:hover) {
         transition: .2s;
     }
+`;
+
+export const ResultProfile = styled.div`
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 3fr 7fr;
 `;
