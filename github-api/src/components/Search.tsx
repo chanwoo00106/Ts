@@ -8,6 +8,7 @@ function Search() {
 
     return (
         <Wrapper>
+            <img className="logo" src="./img/logo.png" alt="logo" />
             <form onSubmit={onSubmit} className="search">
                 <Input placeholder="Type your github id" />
                 <Btn>Submit</Btn>
