@@ -6,8 +6,6 @@ export const Wrapper = styled.ul`
     list-style: none;
     overflow: auto;
     padding: 10px;
-    border-radius: 10px;
-    background: linear-gradient(rgba(72, 245, 146, .6), #ffffff);
 
     &::-webkit-scrollbar {
         width: 10px;
@@ -30,7 +28,6 @@ export const Wrapper = styled.ul`
         border-radius: 10px;
         margin-bottom: 5px;
         background-color: rgba(225,225,225, .6);
-        box-shadow: 0 10px 10px rgba(0,0,0,.5);
 
         .line {
             text-decoration: line-through;
