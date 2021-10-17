@@ -40,16 +40,13 @@ export interface IData {
 
 function Search() {
     const [id, setId] = useState('');
-    const [data, setData] = useState<IData[]>([]);
+    const [data, setData] = useState<IData>();
 
     const onSubmit = async (e: any) => {
         e.preventDefault();
         try {
             const res = await axios.get(`https://api.github.com/users/${id}`)
-            setData([
-                ...data,
-                res.data
-            ]);
+            setData(res.data);
         } catch (e) {
             alert('없는 id입니다. 다시 검색해주세요')
             console.log(e);
@@ -68,16 +65,20 @@ function Search() {
             </form>
 
             <div className="over">
-                {data && data.map(data => (
+                {data &&
                     <ResultProfile>
-                        <img src={data.avatar_url} alt="profile-img" />
+                        <a href={data.html_url}><img src={data.avatar_url} alt="profile-img" /></a>
                         <div className="information">
-                            <h3 className="nickname">{data.name ? data.name : data.login}</h3>
-                            <p className="bio">{data.bio}</p>
-                            <p className="repos">repos : {data.public_repos}</p>
+                            <h3 className="nickname"><a href={data.html_url}>{data.name ? data.name : data.login}</a></h3>
+                            <p className="bio"><a href={data.html_url}>{data.bio}</a></p>
+                            <p className="repos"><a href={`https://github.com/${id}?tab=repositories`}>repos : {data.public_repos}</a></p>
+                            <div className="follow">
+                                <p><a href={`https://github.com/${id}?tab=followers`}>followers : {data.followers}</a></p>
+                                <p><a href={`https://github.com/${id}?tab=following`}>following : {data.following}</a></p>
+                            </div>
                         </div>
                     </ResultProfile>
-                ))}
+                }
             </div>
         </Wrapper>
     )

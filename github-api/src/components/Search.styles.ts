@@ -82,4 +82,15 @@ export const ResultProfile = styled.div`
         flex-direction: column;
         justify-content: center;
     }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .follow {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
 `;
