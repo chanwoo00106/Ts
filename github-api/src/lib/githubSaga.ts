@@ -1,9 +1,15 @@
 import { githubData } from "./api";
-import { put, call } from "redux-saga/effects";
+import { put, call, takeEvery } from "redux-saga/effects";
+import { IData, set_data, GET_DATA } from "../module/github";
+import { AxiosResponse } from "axios";
 
-// worker Saga: 비동기 증가 태스크를 수행할겁니다.
-export function* getData(action: string) {
-  const { data } = yield call(() => githubData(action));
-
-  yield put({ type: "INCREMENT" });
+function* get_github(action: { type: string; id: string }) {
+  const res: AxiosResponse<IData> = yield call(githubData, action.id);
+  yield put(set_data(res.data));
 }
+
+function* rootSaga() {
+  yield takeEvery(GET_DATA, get_github);
+}
+
+export default rootSaga;

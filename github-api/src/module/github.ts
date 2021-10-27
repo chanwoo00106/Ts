@@ -46,7 +46,7 @@ export const get_data = (id: string) => ({
   id,
 });
 
-let initialState: IData;
+const initialState: IData | null = null;
 
 type ActionType = {
   type: string;
