@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { get_data } from "../module/github";
 import { Wrapper, Input, Btn } from "./Styles";
+import { reducerState } from "../module";
+import { get_id } from "../module/github";
 
 function Search() {
   const dispatch = useDispatch();
-  const [id, setId] = useState("");
+  const { id } = useSelector((state: reducerState) => state.github);
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ function Search() {
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setId(e.target.value);
+    dispatch(get_id(e.target.value));
 
   return (
     <Wrapper>

@@ -4,11 +4,9 @@ import { reducerState } from "../module";
 import { ResultProfile } from "./Styles";
 
 const Content = () => {
-  const { data, isData, id } = useSelector((state: reducerState) => {
-    console.log(state);
-    return state.github;
-  });
-  console.log(data);
+  const { data, isData, id } = useSelector(
+    (state: reducerState) => state.github
+  );
   return (
     <div className="over">
       {isData ? (
@@ -17,9 +15,9 @@ const Content = () => {
             <img src={data.avatar_url} alt="profile-img" />
           </a>
           <div className="information">
-            <h3 className="nickname">
+            <h2 className="nickname">
               <a href={data.html_url}>{data.name ? data.name : data.login}</a>
-            </h3>
+            </h2>
             <p className="bio">
               <a href={data.html_url}>{data.bio}</a>
             </p>
