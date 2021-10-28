@@ -1,5 +1,8 @@
+import produce from "immer";
+
 export const GET_DATA = "github/GET_DATA";
 export const SET_DATA = "github/SET_DATA";
+export const ID = "github/ID";
 
 export interface IData {
   login: string;
@@ -46,18 +49,71 @@ export const get_data = (id: string) => ({
   id,
 });
 
-const initialState: IData | null = null;
+export const get_id = (id: string) => ({
+  type: ID,
+  id,
+});
+
+const initialState: { data: IData; id: string; isData: boolean } = {
+  data: {
+    login: "",
+    id: 0,
+    node_id: "",
+    avatar_url: "",
+    gravatar_id: "",
+    url: "",
+    html_url: "",
+    followers_url: "",
+    following_url: "",
+    gists_url: "",
+    starred_url: "",
+    subscriptions_url: "",
+    organizations_url: "",
+    repos_url: "",
+    events_url: "",
+    received_events_url: "",
+    type: "",
+    site_admin: false,
+    name: "",
+    company: "",
+    blog: "",
+    location: "",
+    email: null,
+    hireable: null,
+    bio: "",
+    twitter_username: null,
+    public_repos: 0,
+    public_gists: 0,
+    followers: 0,
+    following: 0,
+    created_at: "",
+    updated_at: "",
+  },
+  id: "",
+  isData: false,
+};
 
 type ActionType = {
   type: string;
   data?: IData;
+  id?: string;
 };
 
 function github(state = initialState, action: ActionType) {
   switch (action.type) {
     case SET_DATA:
-      if (action.data) return action.data;
-      break;
+      return produce(state, (draft) => {
+        if (action.data) {
+          draft.data = action.data;
+          draft.id = "";
+          draft.isData = true;
+        }
+      });
+
+    case ID:
+      return produce(state, (draft) => {
+        if (action.id) draft.id = action.id;
+      });
 
     default:
       return state;
