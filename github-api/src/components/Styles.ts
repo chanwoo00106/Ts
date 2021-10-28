@@ -76,6 +76,10 @@ export const ResultProfile = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+
+    .error {
+      color: red;
+    }
   }
 
   a {

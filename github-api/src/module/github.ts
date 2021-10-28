@@ -3,6 +3,7 @@ import produce from "immer";
 export const GET_DATA = "github/GET_DATA";
 export const SET_DATA = "github/SET_DATA";
 export const ID = "github/ID";
+export const SET_ERROR = "github/SET_ERROR";
 
 export interface IData {
   login: string;
@@ -39,6 +40,11 @@ export interface IData {
   updated_at: string;
 }
 
+type TError = {
+  message: string;
+  code: number;
+};
+
 export const set_data = (data: IData) => ({
   type: SET_DATA,
   data,
@@ -54,49 +60,26 @@ export const get_id = (id: string) => ({
   id,
 });
 
-const initialState: { data: IData; id: string; isData: boolean } = {
-  data: {
-    login: "",
-    id: 0,
-    node_id: "",
-    avatar_url: "",
-    gravatar_id: "",
-    url: "",
-    html_url: "",
-    followers_url: "",
-    following_url: "",
-    gists_url: "",
-    starred_url: "",
-    subscriptions_url: "",
-    organizations_url: "",
-    repos_url: "",
-    events_url: "",
-    received_events_url: "",
-    type: "",
-    site_admin: false,
-    name: "",
-    company: "",
-    blog: "",
-    location: "",
-    email: null,
-    hireable: null,
-    bio: "",
-    twitter_username: null,
-    public_repos: 0,
-    public_gists: 0,
-    followers: 0,
-    following: 0,
-    created_at: "",
-    updated_at: "",
-  },
+export const set_error = (error: TError) => ({
+  type: SET_ERROR,
+  error: error,
+});
+
+const initialState: {
+  data: IData | null;
+  id: string;
+  error: TError;
+} = {
+  data: null,
   id: "",
-  isData: false,
+  error: { message: "", code: 0 },
 };
 
 type ActionType = {
   type: string;
-  data?: IData;
-  id?: string;
+  data: IData;
+  id: string;
+  error: TError;
 };
 
 function github(state = initialState, action: ActionType) {
@@ -106,13 +89,18 @@ function github(state = initialState, action: ActionType) {
         if (action.data) {
           draft.data = action.data;
           draft.id = "";
-          draft.isData = true;
         }
       });
 
     case ID:
       return produce(state, (draft) => {
-        if (action.id) draft.id = action.id;
+        draft.id = action.id;
+      });
+
+    case SET_ERROR:
+      return produce(state, (draft) => {
+        draft.error.code = action.error.code;
+        draft.error.message = action.error.message;
       });
 
     default:

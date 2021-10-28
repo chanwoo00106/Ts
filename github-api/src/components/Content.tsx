@@ -1,15 +1,14 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { reducerState } from "../module";
 import { ResultProfile } from "./Styles";
 
 const Content = () => {
-  const { data, isData, id } = useSelector(
+  const { data, id, error } = useSelector(
     (state: reducerState) => state.github
   );
   return (
     <div className="over">
-      {isData ? (
+      {data && !error.message && (
         <ResultProfile>
           <a href={data.html_url}>
             <img src={data.avatar_url} alt="profile-img" />
@@ -40,8 +39,15 @@ const Content = () => {
             </div>
           </div>
         </ResultProfile>
-      ) : (
-        <></>
+      )}
+      {error.message && (
+        <ResultProfile>
+          <div className="information">
+            <h1 className="error">
+              {error.message} {error.code}
+            </h1>
+          </div>
+        </ResultProfile>
       )}
     </div>
   );

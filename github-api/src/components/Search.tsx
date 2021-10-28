@@ -14,8 +14,9 @@ function Search() {
     dispatch(get_data(id));
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(get_id(e.target.value));
+  };
 
   return (
     <Wrapper>
