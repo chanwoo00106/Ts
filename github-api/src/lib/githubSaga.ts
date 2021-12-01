@@ -8,9 +8,7 @@ function* get_github(action: { type: string; id: string }) {
     const res: AxiosResponse<IData> = yield call(githubData, action.id);
     yield put(set_data(res.data));
   } catch (e: any) {
-    yield put(
-      set_error({ message: e.response.data.message, code: e.response.status })
-    );
+    yield put(set_error(e));
   }
 }
 
